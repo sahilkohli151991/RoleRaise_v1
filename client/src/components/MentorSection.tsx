@@ -50,9 +50,9 @@ export function MentorSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">World-Class Mentors</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Get 1-on-1 mentorship from executives at Google, Meta, Amazon, Netflix, and 100+ other top companies
+          <h2 className="text-4xl font-light text-gray-900 mb-6">Why RoleRaise?</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">
+            Meet the Founder & Team
           </p>
         </div>
         
@@ -80,22 +80,39 @@ export function MentorSection() {
           </div>
         </div>
 
-        {/* Companies Section */}
-        <div className="mt-32">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Where Our Clients Work Now</h2>
-            <p className="text-xl text-gray-600">🎯 742+ Tech Professionals Placed in 2025 🚀</p>
-          </div>
-          
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center opacity-60">
-            {[
-              'Google', 'Meta', 'Amazon', 'Netflix', 'Microsoft', 'Apple',
-              'Tesla', 'Uber', 'Stripe', 'Airbnb', 'Spotify', 'LinkedIn'
-            ].map((company) => (
-              <div key={company} className="text-center">
-                <div className="text-2xl font-bold text-gray-600">{company}</div>
+        {/* Credentials Section */}
+        <div className="mt-16">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="bg-gray-50 p-8 rounded-2xl responsive-card">
+              <div className="aspect-video bg-gray-200 rounded-lg mb-6 flex items-center justify-center">
+                <span className="text-gray-500 font-light">Video: "Why We Built RoleRaise" – Speak with Sahil</span>
               </div>
-            ))}
+              <button className="circular-button w-full">
+                Watch Video
+              </button>
+            </div>
+            
+            <div>
+              <h3 className="text-2xl font-medium text-gray-900 mb-6">Our Credentials</h3>
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  <span className="text-gray-600 font-light">14 years leading digital transformations</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  <span className="text-gray-600 font-light">$500 M+ in client value delivered</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  <span className="text-gray-600 font-light">100+ executive mentors across FAANG & Fortune 100</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  <span className="text-gray-600 font-light">1,000+ careers transformed so far</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

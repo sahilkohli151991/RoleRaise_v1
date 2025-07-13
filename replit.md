@@ -2,7 +2,7 @@
 
 ## Overview
 
-RoleRaise is a modern web application for interview coaching and career transformation services. It's built as a full-stack application with a React frontend and Express backend, designed to help tech professionals land high-paying roles through personalized coaching and mentorship.
+RoleRaise is a modern web application for interview coaching and career transformation services. It's built as a full-stack application with a React frontend and Express backend, designed to help tech professionals land high-paying roles through personalized coaching and mentorship. The site has been completely redesigned to match the Finance-able.com aesthetic with structured content sections and improved user experience.
 
 ## User Preferences
 

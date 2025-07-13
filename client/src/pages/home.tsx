@@ -1,11 +1,15 @@
 import { useScrollIndicator } from "@/hooks/useScrollIndicator";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
+import { PricingSection } from "@/components/PricingSection";
+import { OutcomeProjections } from "@/components/OutcomeProjections";
 import { ProblemSection } from "@/components/ProblemSection";
 import { SolutionSection } from "@/components/SolutionSection";
 import { MentorSection } from "@/components/MentorSection";
+import { TrustedBy } from "@/components/TrustedBy";
 import { SuccessSection } from "@/components/SuccessSection";
-import { PricingSection } from "@/components/PricingSection";
+import { Specializations } from "@/components/Specializations";
+import { FAQ } from "@/components/FAQ";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 
@@ -18,11 +22,15 @@ export default function Home() {
       
       <Navigation />
       <Hero />
+      <PricingSection />
+      <OutcomeProjections />
       <ProblemSection />
       <SolutionSection />
       <MentorSection />
+      <TrustedBy />
       <SuccessSection />
-      <PricingSection />
+      <Specializations />
+      <FAQ />
       <ContactSection />
       <Footer />
     </div>

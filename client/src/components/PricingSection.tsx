@@ -3,9 +3,10 @@ import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 const pricingTiers = [
   {
     name: "Interview Mastery",
+    level: "Beginner",
     description: "Perfect for interview preparation",
-    originalPrice: "$4,964",
     price: "$2,980",
+    discount: "40% OFF",
     isPopular: false,
     features: [
       "Resume & LinkedIn optimization",
@@ -18,9 +19,10 @@ const pricingTiers = [
   },
   {
     name: "Dream Job Accelerator",
+    level: "Intermediate",
     description: "Most comprehensive career transformation",
-    originalPrice: "$9,964",
     price: "$5,980",
+    discount: "40% OFF",
     isPopular: true,
     features: [
       "Everything in Interview Mastery",
@@ -28,15 +30,16 @@ const pricingTiers = [
       "5 guaranteed referrals",
       "Unlimited 1:1 coaching",
       "600+ applications handled",
-      "Expert salary negotiation (+$34K avg.)",
+      "Expert negotiation (+$34K avg)",
       "24/7 Slack support"
     ]
   },
   {
     name: "Elite Executive",
+    level: "Executive",
     description: "For executives & senior professionals",
-    originalPrice: "$14,964",
     price: "$8,980",
+    discount: "40% OFF",
     isPopular: false,
     features: [
       "Everything in Dream Job Accelerator",
@@ -88,11 +91,8 @@ export function PricingSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Your $200K+ Career Investment</h2>
-          <p className="text-xl text-gray-600 mb-4">Choose the fastest path to your dream role. Average ROI: 400% within 90 days</p>
-          <div className="inline-flex items-center px-4 py-2 bg-yellow-500 text-white rounded-full text-sm font-medium">
-            🔥 Limited Time: 40% OFF All Programs - Act Fast!
-          </div>
+          <h2 className="text-4xl font-light text-gray-900 mb-6">Targeted Career Packages, Based on Your Goals</h2>
+          <p className="text-xl text-gray-600 mb-8 font-light">Choose the fastest path to your dream role</p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 mb-16">
@@ -104,12 +104,12 @@ export function PricingSection() {
                 </div>
               )}
               <div className="text-center">
-                <div className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium mb-4 inline-block">40% OFF</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{tier.name}</h3>
-                <p className="text-gray-600 mb-4">{tier.description}</p>
+                <div className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium mb-4 inline-block">{tier.level}</div>
+                <div className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium mb-4 inline-block">{tier.discount}</div>
+                <h3 className="text-2xl font-medium text-gray-900 mb-2">{tier.name}</h3>
+                <p className="text-gray-600 mb-4 font-light">{tier.description}</p>
                 <div className="mb-6">
-                  <span className="text-3xl font-bold text-gray-900">{tier.price}</span>
-                  <span className="text-lg text-gray-500 line-through ml-2">{tier.originalPrice}</span>
+                  <span className="text-3xl font-medium text-gray-900">{tier.price}</span>
                 </div>
                 <div className="space-y-3 mb-8 text-sm text-gray-600">
                   {tier.features.map((feature, featureIndex) => (
@@ -119,8 +119,8 @@ export function PricingSection() {
                     </div>
                   ))}
                 </div>
-                <button className="w-full circular-button py-3 text-center font-semibold">
-                  Enroll Now - {tier.price}
+                <button className="w-full circular-button py-3 text-center font-medium">
+                  Learn more
                 </button>
                 <p className="text-xs text-gray-500 mt-2">Or discuss payment options on a call</p>
                 <div className="flex justify-center space-x-4 mt-4 text-xs text-gray-500">

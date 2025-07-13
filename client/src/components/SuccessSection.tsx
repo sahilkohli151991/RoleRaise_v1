@@ -2,25 +2,34 @@ import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const testimonials = [
   {
-    name: "Alok Agarwal",
-    role: "Software Engineer @ Meta",
-    location: "Chicago, IL",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-    quote: "RoleRaise helped me land a role at Twitter, and their ongoing guidance was instrumental in securing my position at Meta. I truly recommend this platform."
+    name: "Shawn S.",
+    role: "SDE @ Meta",
+    quote: "RoleRaise helped me jump from $90K → $165K in just six weeks—best ROI ever."
   },
   {
-    name: "Neelabh Dubey",
-    role: "Product Manager @ Apptad",
-    location: "Atlanta, GA",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-    quote: "Being on STEM OPT had its challenges, but with the network and support from RoleRaise, I was able to land my role at Apptad. I'm truly grateful for their guidance."
+    name: "Neelabh D.",
+    role: "PM @ Apptad",
+    quote: "Their no-sell consultation mapped my skills to the perfect PM role."
   },
   {
-    name: "Pranjal Gupta",
+    name: "Pranjal G.",
     role: "Lead Data Engineer @ Innovaccer",
-    location: "San Francisco, CA",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-    quote: "The interview prep and hands-on coaching I received from my mentors were game-changers. Thanks to RoleRaise, I not only cracked the role but also built skills that will last a lifetime."
+    quote: "Mock interviews with former Amazon execs gave me unbeatable confidence."
+  },
+  {
+    name: "Alok A.",
+    role: "Software Engineer @ Google",
+    quote: "I came in at $85K and left with offers at $185K—unbelievable!"
+  },
+  {
+    name: "Jackson D.",
+    role: "Analyst @ BAML",
+    quote: "Their strategic negotiation coaching earned me an extra $40K."
+  },
+  {
+    name: "Aidan B.",
+    role: "Incoming Analyst @ Piper Sandler",
+    quote: "…I've never felt so prepared walking into a VP interview."
   }
 ];
 
@@ -74,24 +83,17 @@ export function SuccessSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">What Our Members Say</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Join hundreds of professionals who've transformed their careers and doubled their salaries
-          </p>
+          <h2 className="text-4xl font-light text-gray-900 mb-6">What Our Members Say</h2>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="testimonial-card rounded-xl shadow-lg p-6">
-              <img 
-                src={testimonial.image} 
-                alt={testimonial.name} 
-                className="w-16 h-16 rounded-full mx-auto mb-4 object-cover" 
-              />
-              <h3 className="text-lg font-bold text-gray-900 mb-1">{testimonial.name}</h3>
-              <p className="text-primary font-semibold mb-2">{testimonial.role}</p>
-              <p className="text-gray-600 text-sm mb-3">{testimonial.location}</p>
-              <p className="text-gray-600 text-sm">"{testimonial.quote}"</p>
+            <div key={index} className="testimonial-card rounded-xl shadow-lg p-6 responsive-card">
+              <p className="text-gray-600 text-sm mb-4 font-light">"{testimonial.quote}"</p>
+              <div className="border-t pt-4">
+                <h3 className="text-lg font-medium text-gray-900 mb-1">{testimonial.name}</h3>
+                <p className="text-primary font-light">{testimonial.role}</p>
+              </div>
             </div>
           ))}
         </div>

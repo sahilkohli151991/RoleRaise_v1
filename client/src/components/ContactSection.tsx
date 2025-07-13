@@ -66,13 +66,10 @@ export function ContactSection() {
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Ready to Transform Your Career?</h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Schedule a call with RoleRaise to discuss your career goals and see if our program is right for you.
+          <h2 className="text-4xl font-light text-gray-900 mb-6">Ready to Transform Your Career?</h2>
+          <p className="text-xl text-gray-600 mb-8 font-light">
+            Book your 30-minute Strategy Call now—only 7 slots left this week.
           </p>
-          <div className="inline-flex items-center px-4 py-2 bg-yellow-500 text-white rounded-full text-sm font-medium mb-8">
-            Limited Availability: Only 7 Strategy Calls Left This Week
-          </div>
         </div>
         
         <div className="grid md:grid-cols-2 gap-12">
@@ -156,10 +153,10 @@ export function ContactSection() {
               
               <Button 
                 type="submit" 
-                className="w-full circular-button py-3 font-semibold"
+                className="w-full circular-button py-3 font-medium"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Submitting...' : 'GET MY FREE $200K+ ROADMAP'}
+                {isSubmitting ? 'Submitting...' : 'Get My Free $200K+ Roadmap'}
               </Button>
               
               <p className="text-xs text-gray-500 text-center">🔒 Your information is 100% secure. We never share your data.</p>

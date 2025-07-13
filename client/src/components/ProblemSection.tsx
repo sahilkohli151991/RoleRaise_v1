@@ -11,9 +11,9 @@ export function ProblemSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">The Problem</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            95% of applicants fail to stand out in interviews. Fortune 500 jobs have &lt;2% acceptance rate.
+          <h2 className="text-4xl font-light text-gray-900 mb-6">Why Most Candidates Fail</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">
+            95% of applicants fail to stand out. Fortune 500 acceptance &lt; 2%.
           </p>
         </div>
         
@@ -32,25 +32,25 @@ export function ProblemSection() {
                 <div className="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-3 mt-1">
                   <span className="text-white text-sm">✗</span>
                 </div>
-                <p className="text-gray-600">Lack of access to insider insights and executive communication skills</p>
+                <p className="text-gray-600 font-light">Lack of insider insights & executive presence</p>
               </div>
               <div className="flex items-start">
                 <div className="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-3 mt-1">
                   <span className="text-white text-sm">✗</span>
                 </div>
-                <p className="text-gray-600">No technical mock practice with industry experts</p>
+                <p className="text-gray-600 font-light">Zero mock practice with senior mentors</p>
               </div>
               <div className="flex items-start">
                 <div className="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-3 mt-1">
                   <span className="text-white text-sm">✗</span>
                 </div>
-                <p className="text-gray-600">Generic preparation without personalized skill mapping</p>
+                <p className="text-gray-600 font-light">Generic prep without a personalized roadmap</p>
               </div>
               <div className="flex items-start">
                 <div className="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-3 mt-1">
                   <span className="text-white text-sm">✗</span>
                 </div>
-                <p className="text-gray-600">Massive skill gap in high-stakes, structured interviews</p>
+                <p className="text-gray-600 font-light">Huge skill-gaps in high-stakes, structured interviews</p>
               </div>
             </div>
           </div>
