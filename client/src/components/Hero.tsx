@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section 
       ref={ref} 
-      className={`relative bg-gray-50 pt-16 pb-20 overflow-hidden section-fade ${isIntersecting ? 'visible' : ''}`}
+      className={`relative bg-gray-50 pt-24 pb-20 overflow-hidden section-fade ${isIntersecting ? 'visible' : ''}`}
     >
       {/* Geometric Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
@@ -27,7 +27,7 @@ export function Hero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-normal text-gray-900 mb-6 leading-tight">
             Breaking Into<br/>
             <span className="text-gray-700">Tech is Hard</span>
           </h1>
@@ -35,7 +35,7 @@ export function Hero() {
           <div className="mb-12">
             <button 
               onClick={() => scrollToSection('contact')}
-              className="circular-button text-lg font-semibold shadow-lg"
+              className="circular-button text-lg font-medium shadow-lg interactive-hover pulse-animation"
             >
               Find out more
             </button>
@@ -45,9 +45,9 @@ export function Hero() {
             Let us Make it Easy
           </p>
           
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 mb-8 max-w-2xl mx-auto shadow-lg">
-            <h2 className="text-lg font-bold text-gray-900 mb-2">Where Preparation Meets the Offer</h2>
-            <p className="text-gray-600">Technical & Strategic Interview Coaching</p>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 mb-8 max-w-2xl mx-auto shadow-lg responsive-card">
+            <h2 className="text-lg font-medium text-gray-900 mb-2">Where Preparation Meets the Offer</h2>
+            <p className="text-gray-600 font-light">Technical & Strategic Interview Coaching</p>
             <p className="text-sm text-gray-500 mt-2">From Media to Tech | Global Reach</p>
           </div>
           

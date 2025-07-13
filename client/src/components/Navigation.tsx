@@ -18,7 +18,7 @@ export function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4">
       <div className="circular-nav">
         <div className="flex items-center space-x-6">
-          <Link href="/" className="text-xl font-bold text-white">RoleRaise</Link>
+          <Link href="/" className="text-xl font-medium text-white">RoleRaise</Link>
           
           <div className="hidden md:flex items-center space-x-2">
             <button onClick={() => scrollToSection('problem')} className="nav-button">Learn</button>
