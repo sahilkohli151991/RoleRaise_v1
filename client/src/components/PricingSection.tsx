@@ -97,7 +97,7 @@ export function PricingSection() {
         
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {pricingTiers.map((tier, index) => (
-            <div key={index} className={`bg-white rounded-2xl shadow-lg p-8 price-card ${tier.isPopular ? 'border-2 border-primary relative' : ''}`}>
+            <div key={index} className={`bg-white rounded-2xl shadow-lg p-8 financeble-card ${tier.isPopular ? 'border-2 border-primary relative' : ''}`}>
               {tier.isPopular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <div className="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium">Most Popular</div>
@@ -119,7 +119,7 @@ export function PricingSection() {
                     </div>
                   ))}
                 </div>
-                <button className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition">
+                <button className="w-full circular-button py-3 text-center font-semibold">
                   Enroll Now - {tier.price}
                 </button>
                 <p className="text-xs text-gray-500 mt-2">Or discuss payment options on a call</p>

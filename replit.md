@@ -8,6 +8,10 @@ RoleRaise is a modern web application for interview coaching and career transfor
 
 Preferred communication style: Simple, everyday language.
 Design preference: Modern, clean design with light gray/white background and scattered geometric triangle elements, inspired by Finance-able website design.
+Font preference: Lato from Google Fonts
+Button style: Circular buttons with hover effects
+Navigation: Circular dark navigation bar with Finance-able style hover effects
+Animations: Floating geometric triangles with subtle animations
 
 ## System Architecture
 

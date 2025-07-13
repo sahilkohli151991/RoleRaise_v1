@@ -17,20 +17,16 @@ export function Hero() {
     >
       {/* Geometric Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="geometric-triangle geometric-triangle-1"></div>
-        <div className="geometric-triangle geometric-triangle-2"></div>
-        <div className="geometric-triangle geometric-triangle-3"></div>
-        <div className="geometric-triangle geometric-triangle-4"></div>
-        <div className="geometric-triangle geometric-triangle-5"></div>
-        <div className="geometric-triangle geometric-triangle-6"></div>
+        <div className="geometric-triangle geometric-triangle-1 floating-triangle"></div>
+        <div className="geometric-triangle geometric-triangle-2 floating-triangle"></div>
+        <div className="geometric-triangle geometric-triangle-3 floating-triangle"></div>
+        <div className="geometric-triangle geometric-triangle-4 floating-triangle"></div>
+        <div className="geometric-triangle geometric-triangle-5 floating-triangle"></div>
+        <div className="geometric-triangle geometric-triangle-6 floating-triangle"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
-          <div className="inline-flex items-center px-4 py-2 bg-green-500/10 text-green-600 rounded-full text-sm font-medium mb-6">
-            ⚡ 742+ Tech Professionals Placed in 2025
-          </div>
-          
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
             Breaking Into<br/>
             <span className="text-gray-700">Tech is Hard</span>
@@ -39,7 +35,7 @@ export function Hero() {
           <div className="mb-12">
             <button 
               onClick={() => scrollToSection('contact')}
-              className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition shadow-lg"
+              className="circular-button text-lg font-semibold shadow-lg"
             >
               Find out more
             </button>

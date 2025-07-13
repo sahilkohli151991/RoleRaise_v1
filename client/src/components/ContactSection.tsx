@@ -156,7 +156,7 @@ export function ContactSection() {
               
               <Button 
                 type="submit" 
-                className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition"
+                className="w-full circular-button py-3 font-semibold"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Submitting...' : 'GET MY FREE $200K+ ROADMAP'}

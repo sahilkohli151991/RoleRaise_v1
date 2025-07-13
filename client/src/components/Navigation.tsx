@@ -15,42 +15,40 @@ export function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-800/95 backdrop-blur-sm border-b border-gray-700/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-white">RoleRaise</Link>
-          </div>
+    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4">
+      <div className="circular-nav">
+        <div className="flex items-center space-x-6">
+          <Link href="/" className="text-xl font-bold text-white">RoleRaise</Link>
           
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              <button onClick={() => scrollToSection('problem')} className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition">Learn</button>
-              <button onClick={() => scrollToSection('solution')} className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition">Academy</button>
-              <button onClick={() => scrollToSection('mentors')} className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition">Free</button>
-              <button onClick={() => scrollToSection('success')} className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition">About</button>
-              <button onClick={() => scrollToSection('contact')} className="bg-primary text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition">Log in</button>
-            </div>
+          <div className="hidden md:flex items-center space-x-2">
+            <button onClick={() => scrollToSection('problem')} className="nav-button">Learn</button>
+            <button onClick={() => scrollToSection('solution')} className="nav-button">Academy</button>
+            <button onClick={() => scrollToSection('mentors')} className="nav-button">Free</button>
+            <button onClick={() => scrollToSection('success')} className="nav-button">About</button>
+            <button onClick={() => scrollToSection('contact')} className="circular-button">Log in</button>
           </div>
           
           <div className="md:hidden">
             <button 
               onClick={() => setIsOpen(!isOpen)} 
-              className="text-gray-300 hover:text-white focus:outline-none"
+              className="text-gray-300 hover:text-white focus:outline-none p-2"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
       </div>
       
       {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-800 border-t border-gray-700">
-            <button onClick={() => scrollToSection('problem')} className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Learn</button>
-            <button onClick={() => scrollToSection('solution')} className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Academy</button>
-            <button onClick={() => scrollToSection('mentors')} className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">Free</button>
-            <button onClick={() => scrollToSection('success')} className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium">About</button>
-            <button onClick={() => scrollToSection('contact')} className="bg-primary text-white block px-3 py-2 rounded-lg text-base font-medium hover:bg-primary/90">Log in</button>
+        <div className="md:hidden absolute top-16 left-4 right-4">
+          <div className="circular-nav">
+            <div className="flex flex-col space-y-2 p-2">
+              <button onClick={() => scrollToSection('problem')} className="nav-button text-left">Learn</button>
+              <button onClick={() => scrollToSection('solution')} className="nav-button text-left">Academy</button>
+              <button onClick={() => scrollToSection('mentors')} className="nav-button text-left">Free</button>
+              <button onClick={() => scrollToSection('success')} className="nav-button text-left">About</button>
+              <button onClick={() => scrollToSection('contact')} className="circular-button">Log in</button>
+            </div>
           </div>
         </div>
       )}
