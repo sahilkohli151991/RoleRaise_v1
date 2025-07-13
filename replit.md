@@ -7,6 +7,7 @@ RoleRaise is a modern web application for interview coaching and career transfor
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Design preference: Modern, clean design with light gray/white background and scattered geometric triangle elements, inspired by Finance-able website design.
 
 ## System Architecture
 

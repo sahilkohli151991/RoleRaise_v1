@@ -13,37 +13,46 @@ export function Hero() {
   return (
     <section 
       ref={ref} 
-      className={`hero-gradient pt-16 pb-20 section-fade ${isIntersecting ? 'visible' : ''}`}
+      className={`relative bg-gray-50 pt-16 pb-20 overflow-hidden section-fade ${isIntersecting ? 'visible' : ''}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Geometric Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="geometric-triangle geometric-triangle-1"></div>
+        <div className="geometric-triangle geometric-triangle-2"></div>
+        <div className="geometric-triangle geometric-triangle-3"></div>
+        <div className="geometric-triangle geometric-triangle-4"></div>
+        <div className="geometric-triangle geometric-triangle-5"></div>
+        <div className="geometric-triangle geometric-triangle-6"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
           <div className="inline-flex items-center px-4 py-2 bg-green-500/10 text-green-600 rounded-full text-sm font-medium mb-6">
             ⚡ 742+ Tech Professionals Placed in 2025
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            Where Preparation<br/>
-            <span className="text-primary">Meets the Offer</span>
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+            Breaking Into<br/>
+            <span className="text-gray-700">Tech is Hard</span>
           </h1>
           
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Skip the endless job applications. Get direct access to exclusive $200K+ opportunities 
-            at leading technology companies through our proven coaching network.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="mb-12">
             <button 
               onClick={() => scrollToSection('contact')}
-              className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition"
+              className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition shadow-lg"
             >
-              🚀 Schedule Strategy Call
+              Find out more
             </button>
-            <button 
-              onClick={() => scrollToSection('success')}
-              className="bg-white text-primary px-8 py-4 rounded-lg text-lg font-semibold border-2 border-primary hover:bg-primary/5 transition"
-            >
-              📊 See Success Stories
-            </button>
+          </div>
+          
+          <p className="text-2xl text-gray-600 mb-8 max-w-2xl mx-auto font-light">
+            Let us Make it Easy
+          </p>
+          
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 mb-8 max-w-2xl mx-auto shadow-lg">
+            <h2 className="text-lg font-bold text-gray-900 mb-2">Where Preparation Meets the Offer</h2>
+            <p className="text-gray-600">Technical & Strategic Interview Coaching</p>
+            <p className="text-sm text-gray-500 mt-2">From Media to Tech | Global Reach</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">

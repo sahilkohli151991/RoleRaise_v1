@@ -102,6 +102,68 @@
     background: rgba(255, 255, 255, 0.9);
   }
 
+  .geometric-triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    position: absolute;
+    opacity: 0.2;
+  }
+
+  .geometric-triangle-1 {
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 52px solid #6b7280;
+    top: 10%;
+    left: 5%;
+    transform: rotate(15deg);
+  }
+
+  .geometric-triangle-2 {
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid #6b7280;
+    top: 30%;
+    right: 10%;
+    transform: rotate(-30deg);
+  }
+
+  .geometric-triangle-3 {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 26px solid #6b7280;
+    top: 60%;
+    left: 20%;
+    transform: rotate(45deg);
+  }
+
+  .geometric-triangle-4 {
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 43px solid #6b7280;
+    bottom: 20%;
+    right: 15%;
+    transform: rotate(-15deg);
+  }
+
+  .geometric-triangle-5 {
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-bottom: 31px solid #6b7280;
+    bottom: 40%;
+    left: 10%;
+    transform: rotate(60deg);
+  }
+
+  .geometric-triangle-6 {
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 21px solid #6b7280;
+    top: 40%;
+    right: 30%;
+    transform: rotate(-45deg);
+  }
+
   .mentor-card {
     transition: all 0.3s ease;
   }
