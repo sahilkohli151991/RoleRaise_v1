@@ -56,39 +56,7 @@ export function ProblemSection() {
           </div>
         </div>
 
-        {/* Opportunity Section */}
-        <div className="mt-32">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">The Opportunity</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Fortune 500 companies hire ~6M people globally every year. The coaching industry is worth $20B+ and growing.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">👥</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">6M+</h3>
-              <p className="text-gray-600">Fortune 500 hires annually</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">📈</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">300M+</h3>
-              <p className="text-gray-600">Job applications worldwide</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">💼</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">$20B+</h3>
-              <p className="text-gray-600">Coaching industry value</p>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   );
