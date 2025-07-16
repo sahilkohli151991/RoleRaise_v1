@@ -159,7 +159,7 @@ export function PricingSection() {
         
         <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-6 mb-16">
           {pricingTiers.map((tier, index) => (
-            <div key={index} className={`bg-white rounded-2xl shadow-lg p-6 financeble-card ${tier.isPopular ? 'border-2 border-primary relative' : ''}`}>
+            <div key={index} className={`bg-white rounded-2xl shadow-lg p-6 financeble-card flex flex-col ${tier.isPopular ? 'border-2 border-primary relative' : ''}`}>
               {tier.isPopular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <div className="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium">Best Value</div>
@@ -209,7 +209,7 @@ export function PricingSection() {
                   </button>
                 )}
                 
-                <div className="flex justify-center">
+                <div className="mt-auto">
                   <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg text-sm font-medium transition-colors">
                     Choose Plan
                   </button>

@@ -55,7 +55,7 @@ const testimonials = [
 
 const specializations = [
   {
-    icon: "💻",
+    icon: "</> ",
     title: "Software Engineering",
     description: "Frontend, Backend, Full-Stack, Mobile",
     salary: "Avg. $180K+"
@@ -89,6 +89,75 @@ const specializations = [
     title: "Engineering Leadership",
     description: "Tech Lead, Eng Manager",
     salary: "Avg. $220K+"
+  },
+  {
+    icon: "👥",
+    title: "Agile Program Management",
+    description: "Scrum Master, Program Manager, Agile Coach",
+    salary: "Avg. $165K+"
+  },
+  {
+    icon: "💾",
+    title: "Data Engineering",
+    description: "Data Engineer, Platform Engineer, ETL Developer",
+    salary: "Avg. $175K+"
+  },
+  {
+    icon: "📈",
+    title: "Business Analyst",
+    description: "Business Analyst, Product Analyst, Strategy Analyst",
+    salary: "Avg. $140K+"
+  }
+];
+
+const careerJumpData = [
+  {
+    icon: "💻",
+    role: "Software Engineer",
+    before: "$95K",
+    after: "$160K",
+    increase: "68%",
+    timeline: "6 weeks"
+  },
+  {
+    icon: "📊",
+    role: "Data Scientist",
+    before: "$100K",
+    after: "$165K",
+    increase: "65%",
+    timeline: "7 weeks"
+  },
+  {
+    icon: "🚀",
+    role: "Product Manager",
+    before: "$110K",
+    after: "$180K",
+    increase: "64%",
+    timeline: "8 weeks"
+  },
+  {
+    icon: "🎨",
+    role: "UX Designer",
+    before: "$85K",
+    after: "$140K",
+    increase: "65%",
+    timeline: "5 weeks"
+  },
+  {
+    icon: "⚡",
+    role: "Engineering Manager",
+    before: "$130K",
+    after: "$210K",
+    increase: "62%",
+    timeline: "7 weeks"
+  },
+  {
+    icon: "📈",
+    role: "Growth & Marketing Lead",
+    before: "$90K",
+    after: "$155K",
+    increase: "72%",
+    timeline: "6 weeks"
   }
 ];
 
@@ -180,15 +249,53 @@ export function SuccessSection() {
             <p className="text-xl text-gray-600">Our mentors have deep, track-specific expertise</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             {specializations.map((spec, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 text-center">
+              <div key={index} className="bg-white rounded-xl p-6 text-center shadow-lg">
                 <div className="text-3xl mb-4">{spec.icon}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{spec.title}</h3>
                 <p className="text-gray-600 text-sm mb-2">{spec.description}</p>
                 <p className="text-green-600 font-semibold">{spec.salary}</p>
               </div>
             ))}
+          </div>
+          
+          {/* Career Jump Visualization */}
+          <div className="mt-24">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">Your Career Jump, Visualized</h2>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <div className="grid grid-cols-4 gap-4 mb-4 text-center font-semibold text-gray-700">
+                <div>Role</div>
+                <div>Before → After</div>
+                <div>% Increase</div>
+                <div>Time to Offer</div>
+              </div>
+              
+              <div className="space-y-4">
+                {careerJumpData.map((item, index) => (
+                  <div key={index} className="grid grid-cols-4 gap-4 items-center py-3 border-b border-gray-100">
+                    <div className="flex items-center">
+                      <span className="text-2xl mr-3">{item.icon}</span>
+                      <span className="font-medium text-gray-900">{item.role}</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-red-500 font-medium">{item.before}</span>
+                      <span className="text-gray-400 mx-2">→</span>
+                      <span className="text-green-500 font-medium">{item.after}</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-blue-600 font-semibold">{item.increase}</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-gray-700">{item.timeline}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
