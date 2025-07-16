@@ -175,17 +175,21 @@ export function PricingSection() {
                   {index === 4 && <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">📈</div>}
                 </div>
                 
-                <h3 className="text-lg font-medium text-gray-900 mb-2">{tier.name}</h3>
-                <div className="text-sm text-gray-600 mb-4">{tier.level}</div>
-                
-                <div className="mb-4">
-                  <span className="text-2xl font-bold text-gray-900">{tier.price}</span>
-                  <div className="text-sm text-gray-500">{tier.period}</div>
+                <div className="h-14 flex flex-col justify-center mb-4">
+                  <h3 className="text-lg font-medium text-gray-900 text-center">{tier.name}</h3>
+                  <div className="text-sm text-gray-600 text-center">{tier.level}</div>
                 </div>
                 
-                {tier.discount && (
-                  <div className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium mb-4 inline-block">{tier.discount}</div>
-                )}
+                <div className="mb-4 h-16 flex flex-col justify-center">
+                  <span className="text-2xl font-bold text-gray-900 text-center">{tier.price}</span>
+                  <div className="text-sm text-gray-500 text-center">{tier.period}</div>
+                </div>
+                
+                <div className="h-8 flex justify-center items-center mb-4">
+                  {tier.discount && (
+                    <div className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">{tier.discount}</div>
+                  )}
+                </div>
                 
                 <div className="space-y-2 mb-4 text-sm text-gray-600 text-left">
                   {(expandedCards[index] ? tier.features : tier.features.slice(0, 4)).map((feature, featureIndex) => (
