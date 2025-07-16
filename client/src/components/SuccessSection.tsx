@@ -171,76 +171,7 @@ export function SuccessSection() {
           </div>
         </div>
 
-        {/* Transformation Section */}
-        <div className="grid md:grid-cols-3 gap-8 items-center mb-16">
-          <div className="text-center">
-            <div className="bg-red-50 rounded-2xl p-8 mb-4">
-              <h3 className="text-2xl font-bold text-red-600 mb-4">BEFORE RoleRaise</h3>
-              <div className="text-3xl font-bold text-gray-900 mb-2">$85K</div>
-              <p className="text-gray-600 text-sm mb-4">Avg. Salary</p>
-              <div className="space-y-2 text-left">
-                <div className="flex items-center">
-                  <span className="text-red-500 mr-2">×</span>
-                  <span className="text-sm text-gray-600">Sending 100+ apps with no response</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="text-red-500 mr-2">×</span>
-                  <span className="text-sm text-gray-600">Rejected after first-round interviews</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="text-red-500 mr-2">×</span>
-                  <span className="text-sm text-gray-600">No connections at target companies</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="text-red-500 mr-2">×</span>
-                  <span className="text-sm text-gray-600">Accepting lowball offers</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="text-center">
-            <div className="bg-primary text-white rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4">
-              <span className="text-lg font-bold">90 DAYS</span>
-            </div>
-            <div className="text-4xl font-bold text-primary">→</div>
-          </div>
-          
-          <div className="text-center">
-            <div className="bg-green-50 rounded-2xl p-8 mb-4">
-              <h3 className="text-2xl font-bold text-green-600 mb-4">AFTER RoleRaise</h3>
-              <div className="text-3xl font-bold text-gray-900 mb-2">$185K+</div>
-              <p className="text-gray-600 text-sm mb-4">Avg. Salary</p>
-              <div className="space-y-2 text-left">
-                <div className="flex items-center">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span className="text-sm text-gray-600">Direct referrals from FAANG engineers</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span className="text-sm text-gray-600">Insider interview prep</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span className="text-sm text-gray-600">Intros to hiring managers</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span className="text-sm text-gray-600">Multiple competing offers</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div className="text-center mb-16">
-          <div className="bg-primary text-white rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">TRANSFORMATION IMPACT</h3>
-            <p className="text-xl mb-2">$85K → $185K = +$100K per year</p>
-            <p className="text-sm opacity-90 mb-4">That's $500K+ over 5 years!</p>
-            <p className="text-lg font-semibold">Average ROI: 2,000% in first year alone</p>
-          </div>
-        </div>
 
         {/* Specializations Section */}
         <div className="mt-32">
