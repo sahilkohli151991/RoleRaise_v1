@@ -209,9 +209,11 @@ export function PricingSection() {
                   </button>
                 )}
                 
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg text-sm font-medium transition-colors">
-                  Choose Plan
-                </button>
+                <div className="flex justify-center">
+                  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg text-sm font-medium transition-colors">
+                    Choose Plan
+                  </button>
+                </div>
                 
                 <div className="mt-4 text-xs text-gray-500">
                   🛡️ {tier.guarantee}

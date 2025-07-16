@@ -2,34 +2,46 @@ import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const testimonials = [
   {
-    name: "Shawn S.",
-    role: "SDE @ Meta",
-    quote: "RoleRaise helped me jump from $90K → $165K in just six weeks—best ROI ever."
+    name: "Neelabh Dubey",
+    role: "Product Manager @ Apptad",
+    quote: "Being on STEM OPT had its challenges, but with the network and support from RoleRaise, I was able to land my role at Apptad. I'm truly grateful for their guidance.",
+    image: "/api/placeholder/50/50"
   },
   {
-    name: "Neelabh D.",
-    role: "PM @ Apptad",
-    quote: "Their no-sell consultation mapped my skills to the perfect PM role."
-  },
-  {
-    name: "Pranjal G.",
+    name: "Pranjal Gupta",
     role: "Lead Data Engineer @ Innovaccer",
-    quote: "Mock interviews with former Amazon execs gave me unbeatable confidence."
+    quote: "The interview prep and hard coaching I received from my mentors were game-changers. Thanks to RoleRaise, I not only cracked the role but also built skills that will last a lifetime.",
+    image: "/api/placeholder/50/50"
   },
   {
-    name: "Alok A.",
-    role: "Software Engineer @ Google",
-    quote: "I came in at $85K and left with offers at $185K—unbelievable!"
+    name: "Ratul C.",
+    role: "Data Engineer @ Commonwealth Bank of Australia",
+    quote: "Switching companies is challenging, but the comprehensive support from RoleRaise made all the difference in landing my role at CBA.",
+    image: "/api/placeholder/50/50"
   },
   {
-    name: "Jackson D.",
-    role: "Analyst @ BAML",
-    quote: "Their strategic negotiation coaching earned me an extra $40K."
+    name: "Saurabh Anand",
+    role: "Associate Director @ BeOne Medicines",
+    quote: "The guidance and encouragement from my RoleRaise mentors helped me secure my Associate Director role. I'm extremely grateful for their support.",
+    image: "/api/placeholder/50/50"
   },
   {
-    name: "Aidan B.",
-    role: "Incoming Analyst @ Piper Sandler",
-    quote: "…I've never felt so prepared walking into a VP interview."
+    name: "Sumit Sahagal",
+    role: "Product Manager @ NAV USA",
+    quote: "RoleRaise's mentorship and resources were instrumental in my transition to Product Management at NAV.",
+    image: "/api/placeholder/50/50"
+  },
+  {
+    name: "Safal Kumar",
+    role: "Program Manager @ Sigmoid India",
+    quote: "The personalized coaching and industry insights from RoleRaise helped me land my dream role at Sigmoid.",
+    image: "/api/placeholder/50/50"
+  },
+  {
+    name: "Adam Parry",
+    role: "KPMG UK",
+    quote: "The mentorship and coaching I received were truly transformative. With their expert guidance, I was able to land the perfect role at KPMG UK—something I once thought was out of reach. I can't recommend this program enough for anyone serious about elevating their career.",
+    image: "/api/placeholder/50/50"
   }
 ];
 
@@ -83,19 +95,51 @@ export function SuccessSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-light text-gray-900 mb-6">What Our Members Say</h2>
+          <h2 className="text-4xl font-light text-gray-900 mb-6">Real Results. Real People.</h2>
+          <p className="text-xl text-gray-600">See how RoleRaise members have doubled their salaries and landed their dream roles at top companies.</p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="testimonial-card rounded-xl shadow-lg p-6 responsive-card">
-              <p className="text-gray-600 text-sm mb-4 font-light">"{testimonial.quote}"</p>
-              <div className="border-t pt-4">
+          {testimonials.slice(0, 6).map((testimonial, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-lg p-6 text-center">
+              <div className="mb-4">
+                <img 
+                  src={testimonial.image} 
+                  alt={testimonial.name}
+                  className="w-12 h-12 rounded-full mx-auto mb-4"
+                />
                 <h3 className="text-lg font-medium text-gray-900 mb-1">{testimonial.name}</h3>
-                <p className="text-primary font-light">{testimonial.role}</p>
+                <p className="text-blue-600 text-sm font-medium mb-2">{testimonial.role}</p>
+                <div className="flex justify-center mb-4">
+                  <div className="flex text-yellow-400">
+                    {"★".repeat(5)}
+                  </div>
+                </div>
               </div>
+              <p className="text-gray-600 text-sm leading-relaxed">"{testimonial.quote}"</p>
             </div>
           ))}
+        </div>
+        
+        {/* Single testimonial for Adam Parry */}
+        <div className="flex justify-center mb-16">
+          <div className="bg-white rounded-xl shadow-lg p-6 text-center max-w-md">
+            <div className="mb-4">
+              <img 
+                src={testimonials[6].image} 
+                alt={testimonials[6].name}
+                className="w-12 h-12 rounded-full mx-auto mb-4"
+              />
+              <h3 className="text-lg font-medium text-gray-900 mb-1">{testimonials[6].name}</h3>
+              <p className="text-blue-600 text-sm font-medium mb-2">{testimonials[6].role}</p>
+              <div className="flex justify-center mb-4">
+                <div className="flex text-yellow-400">
+                  {"★".repeat(5)}
+                </div>
+              </div>
+            </div>
+            <p className="text-gray-600 text-sm leading-relaxed">"{testimonials[6].quote}"</p>
+          </div>
         </div>
         
         <div className="text-center mb-16">
