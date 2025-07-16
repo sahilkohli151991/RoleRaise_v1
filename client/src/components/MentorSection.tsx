@@ -80,41 +80,7 @@ export function MentorSection() {
           </div>
         </div>
 
-        {/* Credentials Section */}
-        <div className="mt-16">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-gray-50 p-8 rounded-2xl responsive-card">
-              <div className="aspect-video bg-gray-200 rounded-lg mb-6 flex items-center justify-center">
-                <span className="text-gray-500 font-light">Video: "Why We Built RoleRaise" – Speak with Sahil</span>
-              </div>
-              <button className="circular-button w-full">
-                Watch Video
-              </button>
-            </div>
-            
-            <div>
-              <h3 className="text-2xl font-medium text-gray-900 mb-6">Our Credentials</h3>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                  <span className="text-gray-600 font-light">14 years leading digital transformations</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                  <span className="text-gray-600 font-light">$500 M+ in client value delivered</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                  <span className="text-gray-600 font-light">100+ executive mentors across FAANG & Fortune 100</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                  <span className="text-gray-600 font-light">1,000+ careers transformed so far</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   );

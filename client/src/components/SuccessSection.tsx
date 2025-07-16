@@ -55,55 +55,46 @@ const testimonials = [
 
 const specializations = [
   {
-    icon: "</> ",
     title: "Software Engineering",
     description: "Frontend, Backend, Full-Stack, Mobile",
     salary: "Avg. $180K+"
   },
   {
-    icon: "📊",
     title: "Data Science",
     description: "Data Scientist, ML Engineer, Research Scientist",
     salary: "Avg. $180K+"
   },
   {
-    icon: "🚀",
     title: "Product Management",
     description: "PM, Sr PM, Group PM, Dir",
     salary: "Avg. $190K+"
   },
   {
-    icon: "🎨",
     title: "Design & UX",
     description: "Product Designer, UX Researcher",
     salary: "Avg. $160K+"
   },
   {
-    icon: "📈",
     title: "Growth & Marketing",
     description: "Growth PM, Marketing Mgr",
     salary: "Avg. $150K+"
   },
   {
-    icon: "⚡",
     title: "Engineering Leadership",
     description: "Tech Lead, Eng Manager",
     salary: "Avg. $220K+"
   },
   {
-    icon: "👥",
     title: "Agile Program Management",
     description: "Scrum Master, Program Manager, Agile Coach",
     salary: "Avg. $165K+"
   },
   {
-    icon: "💾",
     title: "Data Engineering",
     description: "Data Engineer, Platform Engineer, ETL Developer",
     salary: "Avg. $175K+"
   },
   {
-    icon: "📈",
     title: "Business Analyst",
     description: "Business Analyst, Product Analyst, Strategy Analyst",
     salary: "Avg. $140K+"
@@ -219,26 +210,7 @@ export function SuccessSection() {
           </div>
         </div>
         
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-8">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900">4.9/5</div>
-              <div className="text-sm text-gray-600">Client Rating</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900">742+</div>
-              <div className="text-sm text-gray-600">Clients Hired</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900">92%</div>
-              <div className="text-sm text-gray-600">Success Rate</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900">$34K</div>
-              <div className="text-sm text-gray-600">Avg. Salary Increase</div>
-            </div>
-          </div>
-        </div>
+
 
 
 
@@ -252,7 +224,6 @@ export function SuccessSection() {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {specializations.map((spec, index) => (
               <div key={index} className="bg-white rounded-xl p-6 text-center shadow-lg">
-                <div className="text-3xl mb-4">{spec.icon}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{spec.title}</h3>
                 <p className="text-gray-600 text-sm mb-2">{spec.description}</p>
                 <p className="text-green-600 font-semibold">{spec.salary}</p>
