@@ -6,7 +6,7 @@ import { OutcomeProjections } from "@/components/OutcomeProjections";
 import { ProblemSection } from "@/components/ProblemSection";
 import { SolutionSection } from "@/components/SolutionSection";
 import { MentorSection } from "@/components/MentorSection";
-import { TrustedBy } from "@/components/TrustedBy";
+
 import { SuccessSection } from "@/components/SuccessSection";
 import { Specializations } from "@/components/Specializations";
 import { FAQ } from "@/components/FAQ";
@@ -27,7 +27,6 @@ export default function Home() {
       <ProblemSection />
       <SolutionSection />
       <MentorSection />
-      <TrustedBy />
       <SuccessSection />
       <Specializations />
       <FAQ />

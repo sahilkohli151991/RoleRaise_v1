@@ -1,41 +1,92 @@
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import payalImage from "@assets/payal_1752659516427.jpeg";
+import nimishaImage from "@assets/Nimisha Sainaini_1752659516427.jpeg";
+import rajatImage from "@assets/Rajat_1752659516427.jpeg";
+import akhilImage from "@assets/akhil_1752659516424.jpeg";
+import sahilChaudhryImage from "@assets/sahilc_1752659516428.jpeg";
+import nickImage from "@assets/Nick Parker_1752659516426.jpeg";
+import rajImage from "@assets/Raj_1752659516427.jpeg";
+import shubhiImage from "@assets/Shubhi_1752659516428.jpeg";
+import alokImage from "@assets/Alok_1752659516425.jpeg";
+import sahilKohliImage from "@assets/sahil kohli_1752659516428.jpeg";
+import nitilImage from "@assets/Nitil_1752659516427.jpeg";
+import kpmgLogo from "@assets/logo1_1752659516425.png";
+import googleLogo from "@assets/logo2_1752659516425.png";
+import beOneLogo from "@assets/logo3_1752659516426.png";
+import amazonLogo from "@assets/logo4_1752659516426.png";
+import metaLogo from "@assets/logo5_1752659516426.png";
+import stripeLogo from "@assets/logo8_1752659516426.png";
 
 const mentors = [
+  // Row 1
+  {
+    name: "Rajat Kohli",
+    role: "Sales Leader at Google",
+    company: "Ex-Adobe",
+    image: rajatImage
+  },
+  {
+    name: "Akhil K",
+    role: "Senior Program Manager at NetJean",
+    company: "Ex-Microsoft, Walmart",
+    image: akhilImage
+  },
+  {
+    name: "Sahil Chaudhry",
+    role: "Senior Manager @ Amazon DevOps at",
+    company: "KPMG Global",
+    image: sahilChaudhryImage
+  },
+  // Row 2
+  {
+    name: "Nick Parker",
+    role: "Sr. Director Engineering at Fannie Mae",
+    company: "Ex-Prudential Financial",
+    image: nickImage
+  },
+  {
+    name: "Raj Kumar",
+    role: "Director at Capgemini",
+    company: "Ex-Accenture",
+    image: rajImage
+  },
+  {
+    name: "Shubhi Duggal",
+    role: "Chartered Accountant (CA) &",
+    company: "Chartered Financial Analyst (CFA) at",
+    image: shubhiImage
+  },
+  // Row 3
+  {
+    name: "Alok Agarwal",
+    role: "Data Scientist at Airbnb",
+    company: "Ex-Meta, Twitter",
+    image: alokImage
+  },
   {
     name: "Sahil Kohli",
-    role: "Director @ Tiger Analytics",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-    description: "Director at Tiger Analytics with 14 years of experience leading large-scale digital transformation programs for clients such as Walmart, Disney, Pfizer, Macy's, and McDonald's."
+    role: "Director at Tiger Analytics",
+    company: "Ex-Deloitte",
+    image: sahilKohliImage
+  },
+  {
+    name: "Nitil D",
+    role: "Generative AI & BI Architect at Tiger",
+    company: "Analytics",
+    image: nitilImage
+  },
+  // Row 4 - Payal first, then Nimisha
+  {
+    name: "Payal Dedhia",
+    role: "Founder, Filmy AI & EdTech",
+    company: "Entrepreneur",
+    image: payalImage
   },
   {
     name: "Nimisha Sainani",
     role: "Founder @ The Quiet Reset",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-    description: "Founder of The Quiet Reset with 13+ years scaling startups across India and the U.S., expert in growth strategy and organizational development."
-  },
-  {
-    name: "Rajat Kohli",
-    role: "Sales Leader @ Google",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-    description: "Sales leader at Google with 12+ years in product management and enterprise sales, previously driving growth at Adobe and Google."
-  },
-  {
-    name: "Nick Parker",
-    role: "Sr. Director Engineering @ Fannie Mae",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-    description: "Transformational technical leader specializing in cloud architecture, data systems, and zero trust security. Expert in building high-performing teams."
-  },
-  {
-    name: "Shubhi Duggal",
-    role: "CA & CFA @ AIG, Accenture",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-    description: "Chartered Accountant (CA) and CFA based in New York with 10+ years partnering with global clients like AIG, Accenture, and Fortune 500 companies."
-  },
-  {
-    name: "Sahil Chaudhry",
-    role: "Manager @ KPMG",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300",
-    description: "Experienced Manager at KPMG with expertise in Cloud and DevOps transformations. Proven track record in helping professionals navigate Big Four career paths."
+    company: "13+ years scaling startups across India",
+    image: nimishaImage
   }
 ];
 
@@ -46,41 +97,60 @@ export function MentorSection() {
     <section 
       id="mentors" 
       ref={ref} 
-      className={`py-20 bg-white section-fade ${isIntersecting ? 'visible' : ''}`}
+      className={`py-20 bg-gray-50 section-fade ${isIntersecting ? 'visible' : ''}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-light text-gray-900 mb-6">Why RoleRaise?</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">
-            Meet the Founder & Team
+          <h2 className="text-4xl font-bold text-gray-900 mb-6">Learn from, engage and network with tech executives</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Interact with top innovators from Google, Uber, Facebook, Amazon, Fiverr, Microsoft & more
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
-          {mentors.map((mentor, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 mentor-card">
+        {/* Mentor Grid - 3 columns with proper spacing */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {mentors.slice(0, 9).map((mentor, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-lg p-6 text-center">
               <img 
                 src={mentor.image} 
                 alt={mentor.name} 
-                className="w-20 h-20 rounded-full mx-auto mb-4 object-cover" 
+                className="w-16 h-16 rounded-full mx-auto mb-4 object-cover" 
               />
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{mentor.name}</h3>
-              <p className="text-primary font-semibold mb-2">{mentor.role}</p>
-              <p className="text-gray-600 text-sm">{mentor.description}</p>
+              <h3 className="text-lg font-bold text-gray-900 mb-1">{mentor.name}</h3>
+              <p className="text-sm text-gray-600 mb-1">{mentor.role}</p>
+              <p className="text-xs text-gray-500">{mentor.company}</p>
             </div>
           ))}
         </div>
         
-        <div className="text-center mt-12">
-          <p className="text-gray-600 mb-6">and 100+ more mentors from top companies</p>
-          <div className="flex justify-center flex-wrap gap-6 opacity-60">
-            {['Google', 'Meta', 'Amazon', 'Netflix', 'Apple', 'Microsoft', 'Tesla', 'Uber'].map((company) => (
-              <span key={company} className="text-lg font-bold text-gray-600">{company}</span>
-            ))}
+        {/* Bottom row with only 2 mentors centered */}
+        <div className="flex justify-center gap-8 mb-16">
+          {mentors.slice(9, 11).map((mentor, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-lg p-6 text-center w-80">
+              <img 
+                src={mentor.image} 
+                alt={mentor.name} 
+                className="w-16 h-16 rounded-full mx-auto mb-4 object-cover" 
+              />
+              <h3 className="text-lg font-bold text-gray-900 mb-1">{mentor.name}</h3>
+              <p className="text-sm text-gray-600 mb-1">{mentor.role}</p>
+              <p className="text-xs text-gray-500">{mentor.company}</p>
+            </div>
+          ))}
+        </div>
+        
+        {/* Company logos section */}
+        <div className="text-center">
+          <p className="text-gray-600 mb-8">Our mentor network includes leaders from these top companies:</p>
+          <div className="flex justify-center items-center flex-wrap gap-8">
+            <img src={kpmgLogo} alt="KPMG" className="h-8 opacity-60" />
+            <img src={googleLogo} alt="Google" className="h-8 opacity-60" />
+            <img src={beOneLogo} alt="BeOne" className="h-8 opacity-60" />
+            <img src={amazonLogo} alt="Amazon" className="h-8 opacity-60" />
+            <img src={metaLogo} alt="Meta" className="h-8 opacity-60" />
+            <img src={stripeLogo} alt="Stripe" className="h-8 opacity-60" />
           </div>
         </div>
-
-
       </div>
     </section>
   );
