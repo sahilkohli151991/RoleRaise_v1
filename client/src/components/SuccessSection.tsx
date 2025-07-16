@@ -1,54 +1,54 @@
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
+import neelabhImage from "@assets/Neelabh_1752003812461_1752651945620.jpeg";
+import pranjalImage from "@assets/pranjal_1752003812462_1752651967528.jpeg";
+import ratulImage from "@assets/ratul_1752003812462_1752651958804.jpeg";
+import safalImage from "@assets/safal_1752003812462_1752651958804.jpeg";
+import sumitImage from "@assets/sumit_1752003812463_1752651985578.jpeg";
+import adamImage from "@assets/adam parry_1752651930891.jpeg";
+
 const testimonials = [
   {
     name: "Neelabh Dubey",
     role: "Product Manager @ Apptad",
     quote: "Being on STEM OPT had its challenges, but with the network and support from RoleRaise, I was able to land my role at Apptad. I'm truly grateful for their guidance.",
-    initials: "ND",
-    bgColor: "bg-blue-500"
+    image: neelabhImage
   },
   {
     name: "Pranjal Gupta",
     role: "Lead Data Engineer @ Innovaccer",
     quote: "The interview prep and hard coaching I received from my mentors were game-changers. Thanks to RoleRaise, I not only cracked the role but also built skills that will last a lifetime.",
-    initials: "PG",
-    bgColor: "bg-green-500"
+    image: pranjalImage
   },
   {
     name: "Ratul C.",
     role: "Data Engineer @ Commonwealth Bank of Australia",
     quote: "Switching companies is challenging, but the comprehensive support from RoleRaise made all the difference in landing my role at CBA.",
-    initials: "RC",
-    bgColor: "bg-purple-500"
+    image: ratulImage
   },
   {
     name: "Saurabh Anand",
     role: "Associate Director @ BeOne Medicines",
     quote: "The guidance and encouragement from my RoleRaise mentors helped me secure my Associate Director role. I'm extremely grateful for their support.",
-    initials: "SA",
-    bgColor: "bg-orange-500"
+    image: pranjalImage
   },
   {
     name: "Sumit Sahagal",
     role: "Product Manager @ NAV USA",
     quote: "RoleRaise's mentorship and resources were instrumental in my transition to Product Management at NAV.",
-    initials: "SS",
-    bgColor: "bg-indigo-500"
+    image: sumitImage
   },
   {
     name: "Safal Kumar",
     role: "Program Manager @ Sigmoid India",
     quote: "The personalized coaching and industry insights from RoleRaise helped me land my dream role at Sigmoid.",
-    initials: "SK",
-    bgColor: "bg-teal-500"
+    image: safalImage
   },
   {
     name: "Adam Parry",
     role: "KPMG UK",
     quote: "The mentorship and coaching I received were truly transformative. With their expert guidance, I was able to land the perfect role at KPMG UK—something I once thought was out of reach. I can't recommend this program enough for anyone serious about elevating their career.",
-    initials: "AP",
-    bgColor: "bg-red-500"
+    image: adamImage
   }
 ];
 
