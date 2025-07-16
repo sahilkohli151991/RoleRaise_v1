@@ -53,53 +53,7 @@ const testimonials = [
   }
 ];
 
-const specializations = [
-  {
-    title: "Software Engineering",
-    description: "Frontend, Backend, Full-Stack, Mobile",
-    salary: "Avg. $180K+"
-  },
-  {
-    title: "Data Science",
-    description: "Data Scientist, ML Engineer, Research Scientist",
-    salary: "Avg. $180K+"
-  },
-  {
-    title: "Product Management",
-    description: "PM, Sr PM, Group PM, Dir",
-    salary: "Avg. $190K+"
-  },
-  {
-    title: "Design & UX",
-    description: "Product Designer, UX Researcher",
-    salary: "Avg. $160K+"
-  },
-  {
-    title: "Growth & Marketing",
-    description: "Growth PM, Marketing Mgr",
-    salary: "Avg. $150K+"
-  },
-  {
-    title: "Engineering Leadership",
-    description: "Tech Lead, Eng Manager",
-    salary: "Avg. $220K+"
-  },
-  {
-    title: "Agile Program Management",
-    description: "Scrum Master, Program Manager, Agile Coach",
-    salary: "Avg. $165K+"
-  },
-  {
-    title: "Data Engineering",
-    description: "Data Engineer, Platform Engineer, ETL Developer",
-    salary: "Avg. $175K+"
-  },
-  {
-    title: "Business Analyst",
-    description: "Business Analyst, Product Analyst, Strategy Analyst",
-    salary: "Avg. $140K+"
-  }
-];
+
 
 
 
@@ -165,25 +119,7 @@ export function SuccessSection() {
 
 
 
-        {/* Specializations Section */}
-        <div className="mt-32">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">We specialize in high-demand tech roles</h2>
-            <p className="text-xl text-gray-600">Our mentors have deep, track-specific expertise</p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {specializations.map((spec, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 text-center shadow-lg">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{spec.title}</h3>
-                <p className="text-gray-600 text-sm mb-2">{spec.description}</p>
-                <p className="text-green-600 font-semibold">{spec.salary}</p>
-              </div>
-            ))}
-          </div>
-          
 
-        </div>
       </div>
     </section>
   );

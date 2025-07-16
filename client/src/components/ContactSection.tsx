@@ -21,6 +21,13 @@ export function ContactSection() {
     targetSalary: ""
   });
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -72,134 +79,53 @@ export function ContactSection() {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-12">
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">FREE $200K+ Career Assessment</h3>
-            <p className="text-gray-600 mb-6">See exactly how to land your dream role in 90 days</p>
-            
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">Full Name</Label>
-                  <Input
-                    id="fullName"
-                    type="text"
-                    value={formData.fullName}
-                    onChange={(e) => handleInputChange('fullName', e.target.value)}
-                    required
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email Address</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
-                    required
-                  />
-                </div>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="currentRole" className="block text-sm font-medium text-gray-700 mb-2">Current Role</Label>
-                  <Input
-                    id="currentRole"
-                    type="text"
-                    value={formData.currentRole}
-                    onChange={(e) => handleInputChange('currentRole', e.target.value)}
-                    required
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="experience" className="block text-sm font-medium text-gray-700 mb-2">Years of Experience</Label>
-                  <Select value={formData.experience} onValueChange={(value) => handleInputChange('experience', value)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select experience level" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="1-2">1-2 years</SelectItem>
-                      <SelectItem value="3-5">3-5 years</SelectItem>
-                      <SelectItem value="6-10">6-10 years</SelectItem>
-                      <SelectItem value="10+">10+ years</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="currentSalary" className="block text-sm font-medium text-gray-700 mb-2">Current Salary</Label>
-                  <Input
-                    id="currentSalary"
-                    type="text"
-                    placeholder="$85,000"
-                    value={formData.currentSalary}
-                    onChange={(e) => handleInputChange('currentSalary', e.target.value)}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="targetSalary" className="block text-sm font-medium text-gray-700 mb-2">Target Salary</Label>
-                  <Input
-                    id="targetSalary"
-                    type="text"
-                    placeholder="$180,000"
-                    value={formData.targetSalary}
-                    onChange={(e) => handleInputChange('targetSalary', e.target.value)}
-                  />
-                </div>
-              </div>
+        <div className="flex justify-center">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl">
+            <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">FREE $200K+ Career Assessment</h3>
+              <p className="text-gray-600 mb-6">See exactly how to land your dream role in 90 days</p>
               
               <Button 
-                type="submit" 
+                onClick={() => scrollToSection('roadmap-form')}
                 className="w-full circular-button py-3 font-medium"
-                disabled={isSubmitting}
               >
-                {isSubmitting ? 'Submitting...' : 'Get My Free $200K+ Roadmap'}
+                Get My Free Assessment
               </Button>
-              
-              <p className="text-xs text-gray-500 text-center">🔒 Your information is 100% secure. We never share your data.</p>
-            </form>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Schedule Strategy Call</h3>
-            <p className="text-gray-600 mb-6">Book a 30-minute strategy call to discuss your career goals</p>
-            
-            <div className="bg-gray-50 rounded-lg p-4 mb-6">
-              <div className="text-center">
-                <div className="text-sm text-gray-600 mb-2">Calendly Integration</div>
-                <div className="mt-4">
-                  <Button 
-                    onClick={() => window.open(CALENDLY_URL, '_blank')}
-                    className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition"
-                  >
-                    📅 Book Strategy Call
-                  </Button>
-                </div>
-              </div>
             </div>
             
-            <div className="space-y-4">
-              <div className="flex items-center">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3">
-                  <span className="text-white text-sm">✓</span>
+            <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">1-on-1 Strategy Call</h3>
+              <p className="text-gray-600 mb-6">Book your complimentary 30-minute strategy call with our founder</p>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  <span className="text-gray-600">Personalized career roadmap</span>
                 </div>
-                <p className="text-gray-600">No upfront payment</p>
-              </div>
-              <div className="flex items-center">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3">
-                  <span className="text-white text-sm">✓</span>
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  <span className="text-gray-600">Salary negotiation strategy</span>
                 </div>
-                <p className="text-gray-600">90-day guarantee</p>
-              </div>
-              <div className="flex items-center">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3">
-                  <span className="text-white text-sm">✓</span>
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  <span className="text-gray-600">Interview preparation tips</span>
                 </div>
-                <p className="text-gray-600">FAANG mentors</p>
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                  <span className="text-gray-600">Access to exclusive job opportunities</span>
+                </div>
               </div>
+              
+              <a 
+                href={CALENDLY_URL}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block w-full"
+              >
+                <Button className="w-full circular-button py-3 font-medium">
+                  Book Your Call Now
+                </Button>
+              </a>
             </div>
           </div>
         </div>
