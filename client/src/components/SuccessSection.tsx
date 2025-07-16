@@ -5,6 +5,7 @@ import pranjalImage from "@assets/pranjal_1752003812462_1752651967528.jpeg";
 import ratulImage from "@assets/ratul_1752003812462_1752651958804.jpeg";
 import safalImage from "@assets/safal_1752003812462_1752651958804.jpeg";
 import sumitImage from "@assets/sumit_1752003812463_1752651985578.jpeg";
+import saurabhImage from "@assets/Saurabh_1752003812462_1752657466608.jpeg";
 import adamImage from "@assets/adam parry_1752651930891.jpeg";
 
 const testimonials = [
@@ -30,7 +31,7 @@ const testimonials = [
     name: "Saurabh Anand",
     role: "Associate Director @ BeOne Medicines",
     quote: "The guidance and encouragement from my RoleRaise mentors helped me secure my Associate Director role. I'm extremely grateful for their support.",
-    image: pranjalImage
+    image: saurabhImage
   },
   {
     name: "Sumit Sahagal",
