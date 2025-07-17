@@ -25,7 +25,7 @@ export function Navigation() {
             <button onClick={() => scrollToSection('solution')} className="nav-button">Academy</button>
             <button onClick={() => scrollToSection('mentors')} className="nav-button">Free</button>
             <button onClick={() => scrollToSection('success')} className="nav-button">About</button>
-            <button onClick={() => scrollToSection('contact')} className="circular-button">Log in</button>
+            <button className="circular-button">Log in</button>
           </div>
           
           <div className="md:hidden">
@@ -47,7 +47,7 @@ export function Navigation() {
               <button onClick={() => scrollToSection('solution')} className="nav-button text-left">Academy</button>
               <button onClick={() => scrollToSection('mentors')} className="nav-button text-left">Free</button>
               <button onClick={() => scrollToSection('success')} className="nav-button text-left">About</button>
-              <button onClick={() => scrollToSection('contact')} className="circular-button">Log in</button>
+              <button className="circular-button">Log in</button>
             </div>
           </div>
         </div>

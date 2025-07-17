@@ -1,35 +1,23 @@
-import { useScrollIndicator } from "@/hooks/useScrollIndicator";
-import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
-import { PricingSection } from "@/components/PricingSection";
-import { OutcomeProjections } from "@/components/OutcomeProjections";
 import { ProblemSection } from "@/components/ProblemSection";
 import { SolutionSection } from "@/components/SolutionSection";
-import { MentorSection } from "@/components/MentorSection";
-
+import { ProgramsSection } from "@/components/ProgramsSection";
+import { MentorShowcaseSection } from "@/components/MentorShowcaseSection";
 import { SuccessSection } from "@/components/SuccessSection";
-import { Specializations } from "@/components/Specializations";
-import { FAQ } from "@/components/FAQ";
-import { ContactSection } from "@/components/ContactSection";
+import { FAQSection } from "@/components/FAQSection";
 import { Footer } from "@/components/Footer";
+import { ContactSection } from "@/components/ContactSection";
 
 export default function Home() {
-  const scrollPercent = useScrollIndicator();
-
   return (
-    <div className="min-h-screen">
-      <div className="scroll-indicator" style={{ width: `${scrollPercent}%` }}></div>
-      
-      <Navigation />
+    <div className="min-h-screen bg-white">
       <Hero />
-      <PricingSection />
-      <OutcomeProjections />
       <ProblemSection />
       <SolutionSection />
-      <MentorSection />
+      <ProgramsSection />
+      <MentorShowcaseSection />
       <SuccessSection />
-      <Specializations />
-      <FAQ />
+      <FAQSection />
       <ContactSection />
       <Footer />
     </div>

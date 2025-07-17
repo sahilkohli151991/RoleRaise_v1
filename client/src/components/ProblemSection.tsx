@@ -1,63 +1,42 @@
-import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { motion } from "framer-motion";
 
 export function ProblemSection() {
-  const { ref, isIntersecting } = useIntersectionObserver();
-
   return (
-    <section 
-      id="problem" 
-      ref={ref} 
-      className={`py-20 bg-white section-fade ${isIntersecting ? 'visible' : ''}`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-light text-gray-900 mb-6">Why Most Candidates Fail</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">
-            95% of applicants fail to stand out. Fortune 500 acceptance &lt; 2%.
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-              alt="Professional struggling with interview preparation" 
-              className="rounded-xl shadow-lg w-full h-auto" 
-            />
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Why Most Candidates Fail</h3>
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-3 mt-1">
-                  <span className="text-white text-sm">✗</span>
-                </div>
-                <p className="text-gray-600 font-light">Lack of insider insights & executive presence</p>
-              </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-3 mt-1">
-                  <span className="text-white text-sm">✗</span>
-                </div>
-                <p className="text-gray-600 font-light">Zero mock practice with senior mentors</p>
-              </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-3 mt-1">
-                  <span className="text-white text-sm">✗</span>
-                </div>
-                <p className="text-gray-600 font-light">Generic prep without a personalized roadmap</p>
-              </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-3 mt-1">
-                  <span className="text-white text-sm">✗</span>
-                </div>
-                <p className="text-gray-600 font-light">Huge skill-gaps in high-stakes, structured interviews</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
+    <section className="relative py-16 md:py-20 bg-gradient-to-b from-white via-blue-50 to-white flex flex-col items-center justify-center overflow-hidden">
+      {/* Animated geometric accent */}
+      <motion.div
+        className="absolute left-8 top-8 w-28 h-28 bg-gradient-to-br from-blue-200 to-blue-400 opacity-25 rounded-2xl blur-2xl z-0 animate-spin-slow"
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 24, ease: 'linear' }}
+      />
+      <motion.h2
+        className="text-4xl md:text-6xl font-black text-gray-900 text-center mb-7 max-w-3xl drop-shadow"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        style={{ fontFamily: 'Inter, Satoshi, Arial, sans-serif' }}
+      >
+        Most talented people <span className="text-blue-700">never break into</span> top tech roles—<br className="hidden md:block" />
+        not because of skill, but because of <span className="text-blue-700">strategy</span>.
+      </motion.h2>
+      <motion.p
+        className="text-2xl md:text-3xl text-gray-600 text-center max-w-2xl font-light mb-10"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
+      >
+        The rules have changed. Resumes and LeetCode aren’t enough. You need a proven system, real mentorship, and insider strategies to stand out and win offers at the world’s best companies.
+      </motion.p>
+      {/* Decorative geometric accent (optional) */}
+      <motion.div
+        className="absolute right-12 bottom-8 opacity-20 pointer-events-none hidden md:block"
+        animate={{ scale: [1, 1.12, 1] }}
+        transition={{ repeat: Infinity, duration: 16, ease: 'easeInOut' }}
+      >
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="10" y="10" width="60" height="60" rx="18" fill="#e0e7ef" /></svg>
+      </motion.div>
     </section>
   );
 }

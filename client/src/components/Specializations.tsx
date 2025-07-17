@@ -2,37 +2,49 @@ import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const specializations = [
   {
-    icon: "💻",
+    icon: "",
     title: "Software Engineering",
     description: "Frontend, Backend, Full-Stack, Mobile",
     salary: "Avg. $180K+"
   },
   {
-    icon: "📊",
+    icon: "",
     title: "Data Science",
     description: "Data Scientist, ML Engineer, Research",
     salary: "Avg. $180K+"
   },
   {
-    icon: "🚀",
+    icon: "",
+    title: "Data Engineering",
+    description: "Data Engineer, Data Platform, Big Data, ETL",
+    salary: "Avg. $170K+"
+  },
+  {
+    icon: "",
+    title: "Business Analyst",
+    description: "Business Analyst, Strategy Analyst, Operations Analyst",
+    salary: "Avg. $120K+"
+  },
+  {
+    icon: "",
     title: "Product Management",
     description: "PM, Sr PM, Group PM, Director",
     salary: "Avg. $190K+"
   },
   {
-    icon: "🎨",
+    icon: "",
     title: "Design & UX",
     description: "Product Designer, UX Researcher",
     salary: "Avg. $160K+"
   },
   {
-    icon: "📈",
+    icon: "",
     title: "Growth & Marketing",
     description: "Growth PM, Marketing Manager",
     salary: "Avg. $150K+"
   },
   {
-    icon: "⚡",
+    icon: "",
     title: "Engineering Leadership",
     description: "Tech Lead, Engineering Manager",
     salary: "Avg. $220K+"

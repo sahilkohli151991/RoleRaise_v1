@@ -147,83 +147,67 @@ export function PricingSection() {
   };
 
   return (
-    <section 
-      id="pricing" 
-      ref={ref} 
-      className={`py-20 bg-white section-fade ${isIntersecting ? 'visible' : ''}`}
-    >
+    <section id="pricing" className="py-24 bg-white section-fade">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-light text-gray-900 mb-6">Pick the path that fits your journey</h2>
+          <h2 className="text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">Invest in Your Breakthrough</h2>
+          <p className="text-xl text-gray-700 mb-10 animate-fade-in delay-200">Choose the plan that transforms your career and pays for itself—fast.</p>
         </div>
-        
-        <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20 animate-fade-in delay-400">
           {pricingTiers.map((tier, index) => (
-            <div key={index} className={`bg-white rounded-2xl shadow-lg p-6 financeble-card flex flex-col ${tier.isPopular ? 'border-2 border-primary relative' : ''}`}>
+            <div
+              key={index}
+              className={`relative bg-white rounded-2xl shadow-xl p-8 flex flex-col transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl group ${tier.isPopular ? 'border-4 border-blue-600 scale-105' : 'border border-gray-200'}`}
+            >
               {tier.isPopular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium">Best Value</div>
+                <div className="absolute top-0 right-0 m-4 px-4 py-1 bg-blue-600 text-white text-xs font-bold rounded-full shadow-lg animate-bounce z-10">
+                  Most Popular
                 </div>
               )}
-              <div className="text-center">
-                {/* Icon placeholder */}
-                <div className="flex justify-center mb-4">
-                  {index === 0 && <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">⭐</div>}
-                  {index === 1 && <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">🎯</div>}
-                  {index === 2 && <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">⏰</div>}
-                  {index === 3 && <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">💡</div>}
-                  {index === 4 && <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">📈</div>}
+              {tier.discount && (
+                <div className="absolute top-0 left-0 m-4 px-4 py-1 bg-yellow-500 text-white text-xs font-bold rounded-full shadow-lg animate-pulse z-10">
+                  {tier.discount}
                 </div>
-                
-                <div className="h-14 flex flex-col justify-center mb-4">
-                  <h3 className="text-lg font-medium text-gray-900 text-center">{tier.name}</h3>
-                  <div className="text-sm text-gray-600 text-center">{tier.level}</div>
+              )}
+              {index === 0 && (
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 px-4 py-1 bg-red-600 text-white text-xs font-bold rounded-full shadow-lg animate-pulse z-10">
+                  Limited Spots
                 </div>
-                
-                <div className="mb-4 h-16 flex flex-col justify-center">
-                  <span className="text-2xl font-bold text-gray-900 text-center">{tier.price}</span>
-                  <div className="text-sm text-gray-500 text-center">{tier.period}</div>
-                </div>
-                
-                <div className="h-8 flex justify-center items-center mb-4">
-                  {tier.discount && (
-                    <div className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">{tier.discount}</div>
-                  )}
-                </div>
-                
-                <div className="space-y-2 mb-4 text-sm text-gray-600 text-left">
-                  {(expandedCards[index] ? tier.features : tier.features.slice(0, 4)).map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-start">
-                      <span className="text-green-500 mr-2 mt-0.5">✓</span>
-                      <span className="text-xs">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                {tier.features.length > 4 && (
-                  <button 
-                    onClick={() => toggleCard(index)}
-                    className="text-blue-600 text-xs mb-4 hover:underline"
-                  >
-                    {expandedCards[index] ? 'Show Less ⌄' : 'Show More ⌃'}
-                  </button>
+              )}
+              <div className="h-14 flex flex-col justify-center mb-4">
+                <h3 className="text-lg font-bold text-gray-900 text-center group-hover:text-blue-600 transition-colors duration-200">{tier.name}</h3>
+                <div className="text-sm text-gray-600 text-center">{tier.level}</div>
+              </div>
+              <div className="mb-4 h-16 flex flex-col justify-center">
+                <span className="text-3xl font-extrabold text-gray-900 text-center">{tier.price}</span>
+                <div className="text-sm text-gray-500 text-center">{tier.period}</div>
+              </div>
+              <div className="h-8 flex justify-center items-center mb-4">
+                {tier.guarantee && (
+                  <div className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">{tier.guarantee}</div>
                 )}
-                
-                <div className="mt-auto">
-                  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg text-sm font-medium transition-colors">
-                    Choose Plan
-                  </button>
-                </div>
-                
-                <div className="mt-4 text-xs text-gray-500">
-                  🛡️ {tier.guarantee}
-                </div>
+              </div>
+              <ul className="space-y-2 mb-6 text-sm text-gray-600 text-left">
+                {(tier.features).map((feature, featureIndex) => (
+                  <li key={featureIndex} className="flex items-start">
+                    <span className="text-green-500 mr-2 mt-0.5">✓</span>
+                    <span className="text-xs">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-auto flex justify-center pt-4">
+                <button className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-8 rounded-lg text-sm font-bold shadow-lg transition-colors duration-200 animate-pulse group-hover:animate-none">
+                  Choose Plan
+                </button>
+              </div>
+              <div className="mt-4 text-xs text-gray-500 flex justify-center items-center gap-2">
+                <svg className="w-4 h-4 text-yellow-500 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.707 10.707a1 1 0 01-1.414 0L10 10.414l-2.293 2.293a1 1 0 01-1.414-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 010 1.414z"/></svg>
+                {tier.guarantee}
               </div>
             </div>
           ))}
         </div>
-        
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in delay-600">
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="text-2xl font-bold text-gray-900 mb-2">90-Day Guarantee</div>
@@ -236,25 +220,6 @@ export function PricingSection() {
             <div className="text-center">
               <div className="text-2xl font-bold text-gray-900 mb-2">92% Success Rate</div>
               <p className="text-gray-600 text-sm">Proven track record of results</p>
-            </div>
-          </div>
-        </div>
-
-        {/* FAQ Section */}
-        <div className="mt-32">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Common Questions</h2>
-              <p className="text-xl text-gray-600">But what if you're thinking...</p>
-            </div>
-            
-            <div className="space-y-8">
-              {faqs.map((faq, index) => (
-                <div key={index} className="bg-gray-50 rounded-xl p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">"{faq.question}"</h3>
-                  <p className="text-gray-600">{faq.answer}</p>
-                </div>
-              ))}
             </div>
           </div>
         </div>
