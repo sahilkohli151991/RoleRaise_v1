@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { LogoTicker } from "./LogoTicker";
 
 export function ProblemSection() {
   return (
@@ -15,13 +16,13 @@ export function ProblemSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.9, ease: "easeOut" }}
-        style={{ fontFamily: 'Inter, Satoshi, Arial, sans-serif' }}
+        style={{ fontFamily: 'Lato, Arial, sans-serif' }}
       >
         Most talented people <span className="text-blue-700">never break into</span> top tech roles—<br className="hidden md:block" />
         not because of skill, but because of <span className="text-blue-700">strategy</span>.
       </motion.h2>
       <motion.p
-        className="text-2xl md:text-3xl text-gray-600 text-center max-w-2xl font-light mb-10"
+        className="text-2xl md:text-3xl text-gray-600 text-center max-w-2xl font-light mb-16"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -29,6 +30,17 @@ export function ProblemSection() {
       >
         The rules have changed. Resumes and LeetCode aren’t enough. You need a proven system, real mentorship, and insider strategies to stand out and win offers at the world’s best companies.
       </motion.p>
+      
+      {/* Company logos ticker - integrated within the section */}
+      <motion.div
+        className="w-full"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+      >
+        <LogoTicker />
+      </motion.div>
       {/* Decorative geometric accent (optional) */}
       <motion.div
         className="absolute right-12 bottom-8 opacity-20 pointer-events-none hidden md:block"

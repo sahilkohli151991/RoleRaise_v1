@@ -75,7 +75,7 @@ export function SuccessSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.9, ease: "easeOut" }}
-        style={{ fontFamily: 'Inter, Satoshi, Arial, sans-serif' }}
+        style={{ fontFamily: 'Lato, Arial, sans-serif' }}
       >
         Real <span className="text-blue-700">success stories</span>
       </motion.h2>

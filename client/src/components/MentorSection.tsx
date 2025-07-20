@@ -45,10 +45,13 @@ const mentors = [
     image: nickImage
   },
   {
-    name: "Raj Kumar",
+    name: "Sandeep P. (BeOne)",
     role: "Director at Capgemini",
-    company: "Ex-Accenture",
-    image: rajImage
+    company: "Ex: Accenture",
+    image: rajImage,
+    motto: "Guiding you to global impact.",
+    testimonial: "Raj's insights helped me scale my startup and attract investors. He always provided honest feedback and practical solutions. His support made all the difference.",
+    logo: beOneLogo
   },
   {
     name: "Shubhi Duggal",
@@ -61,19 +64,28 @@ const mentors = [
     name: "Alok Agarwal",
     role: "Data Scientist at Airbnb",
     company: "Ex-Meta, Twitter",
-    image: alokImage
+    image: alokImage,
+    motto: "Data-driven decisions for impactful results.",
+    testimonial: "Alok's expertise in data science helped me understand complex concepts and apply them to real-world problems.",
+    logo: metaLogo
   },
   {
     name: "Sahil Kohli",
-    role: "Director at Tiger Analytics",
-    company: "Ex-Deloitte",
-    image: sahilKohliImage
+    role: "Founder & CEO at BeOne",
+    company: "Ex-Google, Ex-ShareChat",
+    image: sahilKohliImage,
+    motto: "Empowering the next generation of tech leaders.",
+    testimonial: "Sahil's guidance was instrumental in helping me transition into product management. His insights into the tech industry are invaluable.",
+    logo: beOneLogo
   },
   {
-    name: "Nitil D",
-    role: "Generative AI & BI Architect at Tiger",
-    company: "Analytics",
-    image: nitilImage
+    name: "Nitil Pai",
+    role: "Senior Director at KPMG",
+    company: "Ex-Google, Ex-ShareChat",
+    image: nitilImage,
+    motto: "Transforming careers through strategic mentorship.",
+    testimonial: "Nitil's experience in scaling businesses provided me with practical frameworks that I use daily in my role.",
+    logo: kpmgLogo
   },
   // Row 4 - Payal first, then Nimisha
   {
@@ -107,36 +119,90 @@ export function MentorSection() {
           </p>
         </div>
         
-        {/* Mentor Grid - 3 columns with proper spacing */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {mentors.slice(0, 9).map((mentor, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 text-center">
-              <img 
-                src={mentor.image} 
-                alt={mentor.name} 
-                className="w-16 h-16 rounded-full mx-auto mb-4 object-cover" 
-              />
-              <h3 className="text-lg font-bold text-gray-900 mb-1">{mentor.name}</h3>
-              <p className="text-sm text-gray-600 mb-1">{mentor.role}</p>
-              <p className="text-xs text-gray-500">{mentor.company}</p>
-            </div>
-          ))}
-        </div>
-        
-        {/* Bottom row with only 2 mentors centered */}
-        <div className="flex justify-center gap-8 mb-16">
-          {mentors.slice(9, 11).map((mentor, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 text-center w-80">
-              <img 
-                src={mentor.image} 
-                alt={mentor.name} 
-                className="w-16 h-16 rounded-full mx-auto mb-4 object-cover" 
-              />
-              <h3 className="text-lg font-bold text-gray-900 mb-1">{mentor.name}</h3>
-              <p className="text-sm text-gray-600 mb-1">{mentor.role}</p>
-              <p className="text-xs text-gray-500">{mentor.company}</p>
-            </div>
-          ))}
+        {/* Mentor Grid with fixed heights and proper alignment */}
+        <div className="w-full">
+          {/* Top 9 mentors in 3x3 grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {mentors.slice(0, 9).map((mentor, index) => (
+              <div 
+                key={index} 
+                className="relative bg-white rounded-xl shadow-lg p-6 text-center flex flex-col overflow-hidden"
+                style={{ minHeight: '320px' }}
+              >
+                {/* Main Content */}
+                <div className="flex-grow">
+                  <div className="w-20 h-20 mx-auto mb-4 flex-shrink-0">
+                    <img 
+                      src={mentor.image} 
+                      alt={mentor.name}
+                      className="w-full h-full rounded-full object-cover border-2 border-blue-50"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = 'https://via.placeholder.com/150';
+                      }}
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-1">
+                    {mentor.name}
+                  </h3>
+                  <div className="mb-3">
+                    <p className="text-sm text-gray-600">
+                      {mentor.role}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      {mentor.company}
+                    </p>
+                  </div>
+                  
+                  {/* Testimonial Content */}
+                  {mentor.motto && (
+                    <div className="mt-4 pt-4 border-t border-gray-100">
+                      <p className="text-sm italic text-gray-700 mb-2">"{mentor.motto}"</p>
+                      {mentor.logo && (
+                        <div className="flex justify-center space-x-2 mt-2">
+                          <img src={mentor.logo} alt="Company Logo" className="h-4 opacity-70" />
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Bottom 2 centered mentors */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-16">
+            {mentors.slice(9, 11).map((mentor, index) => (
+              <div 
+                key={index} 
+                className="bg-white rounded-xl shadow-lg p-6 text-center w-full max-w-xs"
+                style={{ minHeight: '260px' }}
+              >
+                <div className="w-20 h-20 mx-auto mb-4">
+                  <img 
+                    src={mentor.image} 
+                    alt={mentor.name}
+                    className="w-full h-full rounded-full object-cover border-2 border-blue-50"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = 'https://via.placeholder.com/150';
+                    }}
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  {mentor.name}
+                </h3>
+                <div className="mb-2">
+                  <p className="text-sm text-gray-600">
+                    {mentor.role}
+                  </p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    {mentor.company}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         
         {/* Company logos section */}

@@ -1,13 +1,31 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import "./MentorShowcaseSection.css";
 
-const mentors = [
+type Mentor = {
+  name: string;
+  title: string;
+  company: string;
+  avatar: string;
+  tagline: string;
+  trustLogos: string[];
+  review: {
+    text: string;
+    author: string;
+  };
+};
+
+const mentors: Mentor[] = [
   {
     name: "Rajat Kohli",
     title: "Sales Leader at Google",
     company: "Ex: Adobe",
     avatar: "/attached_assets/Rajat_1752659516427.jpeg",
     tagline: "Empowering the next generation of tech leaders.",
+    review: {
+      text: "Rajat guided me step-by-step to my dream job. His advice was practical, motivating, and tailored to my goals. I felt truly supported throughout my journey.",
+      author: "— Priya S. (ex-Amazon)"
+    },
     trustLogos: [
       "/attached_assets/logo1_1752659516425.png",
       "/attached_assets/logo2_1752659516425.png",
@@ -19,6 +37,10 @@ const mentors = [
     company: "Ex: Microsoft, Walmart",
     avatar: "/attached_assets/akhil_1752659516424.jpeg",
     tagline: "Turning potential into performance.",
+    review: {
+      text: "Akhil helped me break into product management with confidence. He simplified complex topics and always encouraged me to aim higher. His mentorship is a game changer.",
+      author: "— Rohit T. (Meta)"
+    },
     trustLogos: [
       "/attached_assets/logo3_1752659516426.png",
       "/attached_assets/logo4_1752659516426.png",
@@ -30,6 +52,10 @@ const mentors = [
     company: "Ex: Deloitte",
     avatar: "/attached_assets/sahilc_1752659516428.jpeg",
     tagline: "Building careers, not just resumes.",
+    review: {
+      text: "Sahil made advanced cloud concepts easy to master. His career advice was actionable and always on point. I gained both skills and confidence.",
+      author: "— Ananya B. (Google)"
+    },
     trustLogos: [
       "/attached_assets/logo5_1752659516426.png",
       "/attached_assets/logo8_1752659516426.png",
@@ -41,6 +67,10 @@ const mentors = [
     company: "Ex: Prudential Financial",
     avatar: "/attached_assets/Nick Parker_1752659516426.jpeg",
     tagline: "From code to C-suite: your journey starts here.",
+    review: {
+      text: "Nick’s leadership coaching transformed my approach to team management. He shared real-world strategies that I could use immediately. I left every session inspired.",
+      author: "— Kavya R. (Stripe)"
+    },
     trustLogos: [
       "/attached_assets/logo1_1752659516425.png",
       "/attached_assets/logo2_1752659516425.png",
@@ -52,6 +82,10 @@ const mentors = [
     company: "Ex: Accenture",
     avatar: "/attached_assets/Raj_1752659516427.jpeg",
     tagline: "Guiding you to global impact.",
+    review: {
+      text: "Raj’s insights helped me scale my startup and attract investors. He always provided honest feedback and practical solutions. His support made all the difference.",
+      author: "— Sandeep P. (BeOne)"
+    },
     trustLogos: [
       "/attached_assets/logo3_1752659516426.png",
       "/attached_assets/logo4_1752659516426.png",
@@ -63,6 +97,10 @@ const mentors = [
     company: "Ex: Accenture, AIG, Fortune 500",
     avatar: "/attached_assets/Shubhi_1752659516428.jpeg",
     tagline: "Finance meets tech—unlock your edge.",
+    review: {
+      text: "Shubhi made finance and accounting concepts simple and clear. Her mentorship gave me the confidence to take on new roles. I highly recommend her guidance.",
+      author: "— Rohan K. (Fortune 500)"
+    },
     trustLogos: [
       "/attached_assets/logo5_1752659516426.png",
       "/attached_assets/logo8_1752659516426.png",
@@ -74,6 +112,10 @@ const mentors = [
     company: "Ex: Meta, Twitter",
     avatar: "/attached_assets/Alok_1752659516425.jpeg",
     tagline: "Data-driven decisions, career-defining results.",
+    review: {
+      text: "Alok explained data science in a way that finally made sense. His real-world examples and patient teaching style helped me get results fast.",
+      author: "— Meera S. (Airbnb)"
+    },
     trustLogos: [
       "/attached_assets/logo1_1752659516425.png",
       "/attached_assets/logo2_1752659516425.png",
@@ -85,6 +127,10 @@ const mentors = [
     company: "Ex: Deloitte",
     avatar: "/attached_assets/sahil kohli_1752659516428.jpeg",
     tagline: "Analytics for impact, mentorship for life.",
+    review: {
+      text: "Sahil’s analytics mentorship gave me real-world skills I use daily. He helped me see the big picture and grow as a professional. Every session was valuable.",
+      author: "— Arjun M. (Deloitte)"
+    },
     trustLogos: [
       "/attached_assets/logo3_1752659516426.png",
       "/attached_assets/logo4_1752659516426.png",
@@ -96,6 +142,10 @@ const mentors = [
     company: "Ex: Pepsico",
     avatar: "/attached_assets/Nitil_1752659516427.jpeg",
     tagline: "AI is the future—let's build it together.",
+    review: {
+      text: "Nitil opened my eyes to the power of AI and BI. His mentorship was practical, inspiring, and always focused on results. I feel ready for the future.",
+      author: "— Sneha T. (Tiger Analytics)"
+    },
     trustLogos: [
       "/attached_assets/logo5_1752659516426.png",
       "/attached_assets/logo8_1752659516426.png",
@@ -107,6 +157,10 @@ const mentors = [
     company: "13+ years scaling startups across India and the U.S.",
     avatar: "/attached_assets/Nimisha Sainaini_1752659516427.jpeg",
     tagline: "Startups, scale, and success—on your terms.",
+    review: {
+      text: "Nimisha’s startup advice was actionable and motivating. She helped me overcome challenges and move forward with clarity. Her support is unmatched.",
+      author: "— Vikram S. (Startup Founder)"
+    },
     trustLogos: [
       "/attached_assets/logo1_1752659516425.png",
       "/attached_assets/logo2_1752659516425.png",
@@ -116,9 +170,9 @@ const mentors = [
 
 export function MentorShowcaseSection() {
   // Track which images failed to load
-  const [errored, setErrored] = useState({});
+  const [errored, setErrored] = useState<{ [key: number]: boolean }>({});
 
-  const handleImgError = (i) => {
+  const handleImgError = (i: number) => {
     setErrored((prev) => ({ ...prev, [i]: true }));
   };
 
@@ -136,7 +190,7 @@ export function MentorShowcaseSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.9, ease: "easeOut" }}
-        style={{ fontFamily: 'Inter, Satoshi, Arial, sans-serif' }}
+        style={{ fontFamily: 'Lato, Arial, sans-serif' }}
       >
         Meet your <span className="text-blue-700">elite mentors</span>
       </motion.h2>
@@ -153,32 +207,35 @@ export function MentorShowcaseSection() {
         {mentors.map((mentor, i) => (
           <motion.div
             key={mentor.name}
-            className="relative bg-white rounded-3xl shadow-2xl p-8 flex flex-col items-center border-2 border-gray-100 transition-transform duration-300 hover:scale-105 group overflow-hidden"
+            className="mentor-card relative bg-white rounded-3xl shadow-2xl p-8 flex flex-col items-center border-2 border-gray-100 group overflow-hidden"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.1 + i * 0.14, duration: 0.7, ease: 'easeOut' }}
           >
-            {/* Animated floating overlay */}
-            <motion.div
-              className="absolute -top-10 -left-10 w-24 h-24 bg-gradient-to-br from-blue-100 to-blue-400 opacity-10 rounded-full blur-3xl z-0 animate-pulse"
-              animate={{ scale: [1, 1.07, 1] }}
-              transition={{ repeat: Infinity, duration: 9 + i, ease: 'easeInOut' }}
-            />
-            {(!errored[i]) ? (
-              <img
-                src={mentor.avatar}
-                alt={mentor.name}
-                className="w-28 h-28 rounded-full object-cover border-4 border-blue-100 shadow-lg mb-4 z-10"
-                loading="lazy"
-                onError={() => handleImgError(i)}
-              />
-            ) : (
-              <div className="w-28 h-28 rounded-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 text-blue-800 text-3xl font-bold">
-                {mentor.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
-              </div>
-            )}
-            <h3 className="text-xl font-bold text-gray-900 mb-1 z-10">{mentor.name}</h3>
+            {/* Curtain animation layer */}
+            <div className="mentor-curtain">
+              {(!errored[i]) ? (
+                <img
+                  src={mentor.avatar}
+                  alt={mentor.name}
+                  className="w-28 h-28 rounded-full object-cover border-4 border-blue-100 shadow-lg mb-4 z-10"
+                  loading="lazy"
+                  onError={() => handleImgError(i)}
+                />
+              ) : (
+                <div className="w-28 h-28 rounded-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300 text-blue-800 text-3xl font-bold">
+                  {mentor.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+                </div>
+              )}
+              <h3 className="text-xl font-bold text-gray-900 mb-1 z-10">{mentor.name}</h3>
+            </div>
+            {/* Review layer (revealed on hover) */}
+            <div className="mentor-review">
+              <div className="mentor-review-text">{mentor.review?.text}</div>
+              <div className="mentor-review-author">{mentor.review?.author}</div>
+            </div>
+            {/* Card content (below curtain) */}
             <span className="text-sm text-blue-700 font-semibold mb-1 z-10">{mentor.title}</span>
             <p className="text-base text-gray-600 mb-4 text-center z-10">{mentor.company}</p>
             {mentor.tagline && (

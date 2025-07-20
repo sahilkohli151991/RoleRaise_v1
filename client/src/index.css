@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Set Lato as default font for entire website */
+html, body {
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
 :root {
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(20, 14.3%, 4.1%);
@@ -333,26 +342,6 @@
 
   .testimonial-card {
     background: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(0, 0%, 97%) 100%);
-  }
-
-  .price-card {
-    transition: all 0.3s ease;
-  }
-
-  .price-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  }
-
-  .section-fade {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-  }
-
-  .section-fade.visible {
-    opacity: 1;
-    transform: translateY(0);
   }
 
   .pulse-animation {

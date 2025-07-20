@@ -1,229 +1,224 @@
-import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
-import { useState } from "react";
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Check, Zap, Award, Rocket, Briefcase } from 'lucide-react';
 
-const pricingTiers = [
-  {
-    name: "Interview Mastery",
-    level: "Beginner",
-    description: "Perfect for interview preparation",
-    price: "$2,980",
-    period: "(one-time)",
-    discount: null,
-    isPopular: false,
-    guarantee: "30-day money-back guarantee",
-    features: [
-      "Resume & LinkedIn optimization",
-      "Comprehensive interview prep course",
-      "4 mock interviews/month",
-      "2 technical, 2 behavioral interviews",
-      "Salary negotiation masterclass",
-      "Personalized job-search strategy session",
-      "Tailored Job Applications (We apply to relevant roles)",
-      "Exclusive community access"
-    ]
-  },
-  {
-    name: "Dream Job Accelerator",
-    level: "Intermediate",
-    description: "Most comprehensive career transformation",
-    price: "$5,980",
-    period: "(one-time)",
-    discount: "Best Value",
-    isPopular: true,
-    guarantee: "60-day money-back guarantee",
-    features: [
-      "Everything in Interview Mastery, plus:",
-      "Personal FAANG/Fortune 500 Mentor",
-      "8 mock interviews/month",
-      "Mixed panels tailored to your target roles",
-      "5 guaranteed referrals (FAANG or Fortune 500)",
-      "Unlimited 1:1 coaching sessions",
-      "Tailored Job Applications (600+ personalized applications handled)",
-      "Priority 24/7 Slack support"
-    ]
-  },
-  {
-    name: "Elite Executive",
-    level: "Senior",
-    description: "For executives & senior professionals",
-    price: "$8,980",
-    period: "(one-time)",
-    discount: null,
-    isPopular: false,
-    guarantee: "60-day money-back guarantee",
-    features: [
-      "Everything in Dream Job Accelerator, plus:",
-      "Dedicated Career Strategist",
-      "12 mock interviews/month",
-      "C-suite simulations included",
-      "10 guaranteed C-suite referrals",
-      "Executive presence & advanced leadership coaching",
-      "Board-level preparation workshops",
-      "Equity negotiation masterclass",
-      "Tailored Job Applications (1,000 personalized executive applications handled)",
-      "Elite 24/7 priority Slack & direct support line"
-    ]
-  },
-  {
-    name: "Break Into Tech",
-    level: "Foundational Bootcamp",
-    description: "Intensive skills bootcamp",
-    price: "$7,000",
-    period: "(one-time)",
-    discount: null,
-    isPopular: false,
-    guarantee: "30-day money-back guarantee",
-    features: [
-      "Intensive skills bootcamp",
-      "6 mock interviews/month",
-      "Complete resume & LinkedIn overhaul",
-      "Technical & Behavioral training",
-      "3 technical, 3 behavioral interviews",
-      "Interactive live workshops & practical labs",
-      "Personalized career roadmap & 1:1 coaching",
-      "Tailored Job Applications (Proactive, personalized job applications)",
-      "Lifetime alumni network"
-    ]
-  },
-  {
-    name: "Career Growth Subscription",
-    level: "Monthly Support",
-    description: "Ongoing monthly support",
-    price: "$400/month",
-    period: "Cancel anytime",
-    discount: null,
-    isPopular: false,
-    guarantee: "7-day free trial - Cancel anytime",
-    features: [
-      "Weekly live masterclasses",
-      "2 personalized mock interviews/month",
-      "Resume & LinkedIn templates",
-      "Monthly group practice sessions",
-      "Updated templates regularly",
-      "Interview prep workshops",
-      "Comprehensive career resource library",
-      "24/7 Slack access",
-      "Tailored Job Applications (Continuous personalized applications)"
-    ]
-  }
-];
+type Plan = {
+  id: string;
+  name: string;
+  level: string;
+  price: {
+    usd: number;
+    inr: number;
+  };
+  duration: string;
+  features: {
+    text: string;
+    included: boolean;
+  }[];
+  popular?: boolean;
+};
 
-const faqs = [
-  {
-    question: "I don't have enough experience for FAANG",
-    answer: "Clients range 2–15+ yrs. We place both juniors and principals."
-  },
-  {
-    question: "This seems expensive",
-    answer: "Cheapest $34K raise you'll ever get; money-back guarantee."
-  },
-  {
-    question: "No time for coaching?",
-    answer: "3–4 hrs/week replaces 20+ hrs of blind apps; 75% faster results."
-  },
-  {
-    question: "What if I don't get interviews?",
-    answer: "At least 3 top-tier interviews in 90 days or 100% refund."
-  },
-  {
-    question: "Does this work outside the US?",
-    answer: "Yes—US, CA, UK, AU, DE, BR; global FAANG network."
-  },
-  {
-    question: "Can't I learn this on YouTube?",
-    answer: "YouTube can't refer you to a Principal Engineer or negotiate $240K."
-  }
-];
+const PricingSection = () => {
+  const [currency, setCurrency] = useState<'USD' | 'INR'>('USD');
+  const [isLoading, setIsLoading] = useState(true);
 
-export function PricingSection() {
-  const { ref, isIntersecting } = useIntersectionObserver();
-  const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
+  useEffect(() => {
+    const detectLocation = async () => {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        setCurrency(data.country === 'IN' ? 'INR' : 'USD');
+      } catch (error) {
+        console.error('Error detecting location, defaulting to USD:', error);
+        setCurrency('USD');
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  const toggleCard = (index: number) => {
-    setExpandedCards(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
+    detectLocation();
+  }, []);
+
+  const plans: Plan[] = [
+    {
+      id: 'pulse',
+      name: 'RaisePulse',
+      level: 'Beginner',
+      price: { usd: 720, inr: 11500 },
+      duration: '3 months',
+      features: [
+        { text: 'Resume & LinkedIn: 3 reviews', included: true },
+        { text: 'Mock Interviews: 6', included: true },
+        { text: 'Personalized Mentoring', included: false },
+        { text: 'Job Apply Support', included: true },
+        { text: 'Guaranteed Referrals: 2', included: true },
+        { text: 'Resume Customization', included: false },
+      ],
+    },
+    {
+      id: 'power',
+      name: 'RaisePower',
+      level: 'Intermediate',
+      price: { usd: 3600, inr: 55000 },
+      duration: '6 months',
+      popular: true,
+      features: [
+        { text: 'Resume & LinkedIn: 5 reviews', included: true },
+        { text: 'Mock Interviews: 15', included: true },
+        { text: 'Tech Mentoring: 3 sessions', included: true },
+        { text: 'Behavioral Mentoring: 3 sessions', included: true },
+        { text: 'Job Apply Support: 600+ jobs', included: true },
+        { text: 'Guaranteed Referrals: 4', included: true },
+        { text: 'Resume Customization', included: true },
+      ],
+    },
+    {
+      id: 'pinnacle',
+      name: 'RaisePinnacle',
+      level: 'Advanced',
+      price: { usd: 5000, inr: 75000 },
+      duration: '6 months',
+      features: [
+        { text: 'Resume & LinkedIn: 5 reviews', included: true },
+        { text: 'Mock Interviews: 25', included: true },
+        { text: 'Tech Mentoring: 8 sessions', included: true },
+        { text: 'Behavioral Mentoring: 8 sessions', included: true },
+        { text: 'Job Apply Support: 1000+ jobs', included: true },
+        { text: 'Guaranteed Referrals: 8', included: true },
+        { text: 'Resume Customization', included: true },
+      ],
+    },
+    {
+      id: 'path',
+      name: 'RaisePath',
+      level: 'Bootcamp',
+      price: { usd: 6250, inr: 95000 },
+      duration: '6 months',
+      features: [
+        { text: 'Resume building included', included: true },
+        { text: 'Mock Interviews: 30', included: true },
+        { text: 'Tech Mentoring: 10 sessions', included: true },
+        { text: 'Behavioral Mentoring: 10 sessions', included: true },
+        { text: 'Job Apply Support: 800+ jobs', included: true },
+        { text: 'Guaranteed Referrals: 8', included: true },
+        { text: 'Resume Customization', included: true },
+        { text: '$200 consultation credit before joining', included: true },
+      ],
+    },
+  ];
+
+  // Ensure all cards have the same height by making content fill available space
+  const cardContentClass = "flex flex-col h-full";
+  const buttonContainerClass = "mt-auto pt-6";
+
+  const getIcon = (index: number) => {
+    const icons = [
+      <Zap key="zap" className="w-5 h-5" />, 
+      <Briefcase key="briefcase" className="w-5 h-5" />, 
+      <Award key="award" className="w-5 h-5" />, 
+      <Rocket key="rocket" className="w-5 h-5" />
+    ];
+    return icons[index % icons.length];
   };
 
+  if (isLoading) {
+    return (
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">Loading pricing...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section id="pricing" className="py-24 bg-white section-fade">
+    <section id="pricing" className="py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">Invest in Your Breakthrough</h2>
-          <p className="text-xl text-gray-700 mb-10 animate-fade-in delay-200">Choose the plan that transforms your career and pays for itself—fast.</p>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Choose Your Career Growth Plan</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Select the perfect plan to accelerate your tech career with personalized mentorship and support
+            {!isLoading && (
+              <span className="block mt-2 text-sm text-blue-600">
+                Showing prices in {currency === 'INR' ? 'Indian Rupees (₹)' : 'US Dollars ($)'}
+              </span>
+            )}
+          </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20 animate-fade-in delay-400">
-          {pricingTiers.map((tier, index) => (
-            <div
-              key={index}
-              className={`relative bg-white rounded-2xl shadow-xl p-8 flex flex-col transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl group ${tier.isPopular ? 'border-4 border-blue-600 scale-105' : 'border border-gray-200'}`}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {plans.map((plan, index) => (
+            <motion.div
+              key={plan.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              className={`relative flex flex-col h-full bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 ${plan.popular ? 'ring-2 ring-blue-500 transform -translate-y-2' : ''}`}
             >
-              {tier.isPopular && (
-                <div className="absolute top-0 right-0 m-4 px-4 py-1 bg-blue-600 text-white text-xs font-bold rounded-full shadow-lg animate-bounce z-10">
-                  Most Popular
+              {plan.popular && (
+                <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-bl-lg">
+                  MOST POPULAR
                 </div>
               )}
-              {tier.discount && (
-                <div className="absolute top-0 left-0 m-4 px-4 py-1 bg-yellow-500 text-white text-xs font-bold rounded-full shadow-lg animate-pulse z-10">
-                  {tier.discount}
+              
+              <div className={`p-6 ${cardContentClass}`}>
+                <div className="flex items-center mb-4">
+                  <div className="p-2 bg-blue-100 rounded-lg text-blue-600 mr-3">
+                    {getIcon(index)}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900">{plan.name}</h3>
+                    <span className="text-sm text-blue-600 font-medium">{plan.level}</span>
+                  </div>
                 </div>
-              )}
-              {index === 0 && (
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 px-4 py-1 bg-red-600 text-white text-xs font-bold rounded-full shadow-lg animate-pulse z-10">
-                  Limited Spots
+                
+                <div className="mt-6 mb-8">
+                  <div className="flex items-end">
+                    <span className="text-4xl font-bold text-gray-900">
+                      {currency === 'USD' ? `$${plan.price.usd.toLocaleString()}` : `₹${plan.price.inr.toLocaleString()}`}
+                    </span>
+                    <span className="ml-2 text-gray-500">/{plan.duration}</span>
+                  </div>
                 </div>
-              )}
-              <div className="h-14 flex flex-col justify-center mb-4">
-                <h3 className="text-lg font-bold text-gray-900 text-center group-hover:text-blue-600 transition-colors duration-200">{tier.name}</h3>
-                <div className="text-sm text-gray-600 text-center">{tier.level}</div>
+                
+                <ul className="space-y-3 flex-grow">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex items-start">
+                      {feature.included ? (
+                        <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                      ) : (
+                        <span className="w-5 h-5 text-red-400 mr-2 flex-shrink-0">×</span>
+                      )}
+                      <span className={`text-sm ${feature.included ? 'text-gray-700' : 'text-gray-400 line-through'}`}>
+                        {feature.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <div className={buttonContainerClass}>
+                  <button
+                    className={`w-full py-3 px-6 rounded-lg font-medium transition-colors duration-200 ${
+                      plan.popular
+                        ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800'
+                        : 'bg-gray-900 text-white hover:bg-gray-800'
+                    }`}
+                  >
+                    Choose {plan.name}
+                  </button>
+                </div>
               </div>
-              <div className="mb-4 h-16 flex flex-col justify-center">
-                <span className="text-3xl font-extrabold text-gray-900 text-center">{tier.price}</span>
-                <div className="text-sm text-gray-500 text-center">{tier.period}</div>
-              </div>
-              <div className="h-8 flex justify-center items-center mb-4">
-                {tier.guarantee && (
-                  <div className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">{tier.guarantee}</div>
-                )}
-              </div>
-              <ul className="space-y-2 mb-6 text-sm text-gray-600 text-left">
-                {(tier.features).map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start">
-                    <span className="text-green-500 mr-2 mt-0.5">✓</span>
-                    <span className="text-xs">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-auto flex justify-center pt-4">
-                <button className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-8 rounded-lg text-sm font-bold shadow-lg transition-colors duration-200 animate-pulse group-hover:animate-none">
-                  Choose Plan
-                </button>
-              </div>
-              <div className="mt-4 text-xs text-gray-500 flex justify-center items-center gap-2">
-                <svg className="w-4 h-4 text-yellow-500 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm3.707 10.707a1 1 0 01-1.414 0L10 10.414l-2.293 2.293a1 1 0 01-1.414-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 010 1.414z"/></svg>
-                {tier.guarantee}
-              </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-        <div className="text-center mb-16 animate-fade-in delay-600">
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900 mb-2">90-Day Guarantee</div>
-              <p className="text-gray-600 text-sm">Job offer or money back</p>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900 mb-2">FAANG Mentors</div>
-              <p className="text-gray-600 text-sm">Ex-employees guide you</p>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900 mb-2">92% Success Rate</div>
-              <p className="text-gray-600 text-sm">Proven track record of results</p>
-            </div>
-          </div>
+        
+        <div className="mt-12 text-center text-sm text-gray-500">
+          <p>Need help choosing a plan? <a href="#contact" className="text-blue-600 hover:underline">Contact our team</a></p>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default PricingSection;
