@@ -6,11 +6,31 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
-  max-width: 800px;
-  width: 95%;
-  height: 60px;
+  max-width: 900px;
+  width: 97%;
+  min-width: 340px;
+  height: 68px;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.modern-nav .flex.items-center {
+  gap: 1.5rem;
+}
+
+.modern-nav .flex.items-center .flex.items-center {
+  min-width: 170px;
+  margin-left: 12px;
+}
+
+.modern-nav .nav-link {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.modern-nav .login-button {
+  margin-left: 16px;
 }
 
 .modern-nav.scrolled {

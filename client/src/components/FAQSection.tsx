@@ -84,7 +84,7 @@ const faqs = [
 export function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
   return (
-    <section className="relative py-16 md:py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50 overflow-hidden">
+    <section id="faq" className="relative py-16 md:py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50 overflow-hidden">
       <WaveBackground />
       {/* Main Heading */}
       <div className="text-center mb-12 px-4">

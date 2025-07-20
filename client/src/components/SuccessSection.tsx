@@ -8,7 +8,7 @@ const testimonials = [
     quote:
       "Being on STEM OPT had its challenges, but with the network and support from RoleRaise, I was able to land my role at Apptad. I'm truly grateful for their guidance.",
     rating: 5,
-    image: "/avatars/neelabh.jpg",
+    image: "/attached_assets/Neelabh_1752003812461_1752651945620.jpeg",
   },
   {
     name: "Pranjal Gupta",
@@ -16,7 +16,7 @@ const testimonials = [
     quote:
       "The interview prep and hands-on coaching I received from my mentors were game-changers. Thanks to RoleRaise, I not only cracked the role but also built skills that will last a lifetime.",
     rating: 5,
-    image: "/avatars/pranjal.jpg",
+    image: "/attached_assets/pranjal_1752003812462_1752651967528.jpeg",
   },
   {
     name: "Ratul C.",
@@ -24,7 +24,7 @@ const testimonials = [
     quote:
       "Switching companies is challenging, but the comprehensive support from RoleRaise made all the difference in landing my role at CBA.",
     rating: 5,
-    image: "/avatars/ratul.jpg",
+    image: "/attached_assets/ratul_1752003812462_1752651958804.jpeg",
   },
   {
     name: "Saurabh Anand",
@@ -32,7 +32,7 @@ const testimonials = [
     quote:
       "The guidance and encouragement from my RoleRaise mentors helped me secure my Associate Director role. I'm extremely grateful for their support.",
     rating: 5,
-    image: "/avatars/saurabh.jpg",
+    image: "/attached_assets/Saurabh_1752003812462_1752652621965.jpeg",
   },
   {
     name: "Sumit Sahagal",
@@ -40,7 +40,7 @@ const testimonials = [
     quote:
       "RoleRaise's mentorship and resources were instrumental in my transition to Product Management at NAV.",
     rating: 5,
-    image: "/avatars/sumit.jpg",
+    image: "/attached_assets/sumit_1752003812463_1752651985578.jpeg",
   },
   {
     name: "Safal Kumar",
@@ -48,7 +48,7 @@ const testimonials = [
     quote:
       "The personalized coaching and industry insights from RoleRaise helped me land my dream role at Sigmoid.",
     rating: 5,
-    image: "/avatars/safal.jpg",
+    image: "/attached_assets/safal_1752003812462_1752651958804.jpeg",
   },
   {
     name: "Adam Parry",
@@ -56,13 +56,13 @@ const testimonials = [
     quote:
       "The mentorship and coaching I received were truly transformative. With their expert guidance, I was able to land the perfect role at KPMG UK—something I once thought was out of reach. I can't recommend this program enough for anyone serious about elevating their career!",
     rating: 5,
-    image: "/avatars/adam.jpg",
+    image: "/attached_assets/adam parry_1752651930891.jpeg",
   },
 ];
 
 export function SuccessSection() {
   return (
-    <section className="relative py-16 md:py-20 bg-gradient-to-b from-white via-blue-50 to-white flex flex-col items-center justify-center overflow-hidden">
+    <section id="success" className="relative py-16 md:py-20 bg-gradient-to-b from-white via-blue-50 to-white flex flex-col items-center justify-center overflow-hidden">
       {/* Animated geometric accent */}
       <motion.div
         className="absolute left-8 top-8 w-24 h-24 bg-gradient-to-br from-blue-200 to-blue-400 opacity-20 rounded-2xl blur-2xl z-0 animate-spin-slow"
@@ -92,7 +92,7 @@ export function SuccessSection() {
         {testimonials.map((testimonial, i) => (
           <motion.div
             key={testimonial.name}
-            className="relative bg-white rounded-3xl shadow-2xl p-8 flex flex-col border-2 border-gray-100 transition-transform duration-300 hover:scale-105 group overflow-hidden"
+            className="relative bg-white rounded-3xl shadow-2xl p-8 flex flex-col justify-between min-h-[340px] border-2 border-gray-100 transition-transform duration-300 hover:scale-105 group overflow-hidden"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -104,10 +104,10 @@ export function SuccessSection() {
               animate={{ scale: [1, 1.07, 1] }}
               transition={{ repeat: Infinity, duration: 9 + i, ease: 'easeInOut' }}
             />
-            <img src={testimonial.image} alt={testimonial.name} className="w-20 h-20 rounded-full object-cover border-4 border-blue-100 shadow-lg mb-4 z-10" />
-            <h3 className="text-xl font-bold text-gray-900 mb-1 z-10">{testimonial.name}</h3>
-            <span className="text-sm text-blue-700 font-semibold mb-1 z-10">{testimonial.role}</span>
-            <p className="text-base text-gray-600 mb-4 text-center z-10">{testimonial.quote}</p>
+            <img src={testimonial.image} alt={testimonial.name} className="w-20 h-20 rounded-full object-cover border-4 border-blue-100 shadow-lg mb-6 z-10" />
+            <h3 className="text-xl font-bold text-gray-900 mb-1 z-10 text-center">{testimonial.name}</h3>
+            <span className="text-sm text-blue-700 font-semibold mb-2 z-10 text-center block">{testimonial.role}</span>
+            <p className="text-base text-gray-600 mb-0 text-center z-10 break-words flex-1 flex items-center justify-center">{testimonial.quote}</p>
             {/* Subtle animated border for all cards */}
             <motion.div
               className="absolute inset-0 rounded-3xl pointer-events-none z-0"

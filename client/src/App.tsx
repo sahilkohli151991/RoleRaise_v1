@@ -34,6 +34,7 @@ function App() {
       {!loading && (
         <QueryClientProvider client={queryClient}>
           <TooltipProvider>
+            
             <MouseTracker />
             <Toaster />
             <Router />

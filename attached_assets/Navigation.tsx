@@ -29,7 +29,7 @@ export function Navigation() {
       <div className={`modern-nav ${isScrolled ? 'scrolled' : ''}`}>
         <div className="flex items-center justify-between w-full px-8 py-3">
           <Link href="/" className="flex items-center">
-            <img src="/attached_assets/roleraise_logo.svg" alt="RoleRaise Logo" style={{ height: '2.2rem', width: '2.2rem', marginRight: '0.65rem', display: 'inline-block' }} />
+            <img src="/attached_assets/logo_role.png" alt="RoleRaise Logo" style={{ height: '2.2rem', width: '2.2rem', marginRight: '0.65rem', display: 'inline-block' }} />
               <span className="text-xl font-bold text-white hidden sm:inline">RoleRaise</span>
           </Link>
           

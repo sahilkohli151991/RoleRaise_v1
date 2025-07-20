@@ -3,6 +3,7 @@ export function Footer() {
     <div>
       {/* TRUST BAR: Add above footer for credibility */}
       <div className="w-full bg-gradient-to-r from-blue-50 via-white to-blue-50 py-4 flex flex-col md:flex-row items-center justify-center gap-6 border-b border-blue-100">
+  <img src="/attached_assets/roleraise_logo.svg" alt="RoleRaise Logo" style={{ height: '2.2rem', width: '2.2rem', marginRight: '0.65rem', display: 'inline-block' }} />
         <span className="text-gray-700 font-semibold text-base md:text-lg flex items-center gap-2">
           <svg width="22" height="22" fill="none" viewBox="0 0 22 22" className="inline-block text-blue-600"><circle cx="11" cy="11" r="11" fill="#2563EB"/><path d="M7.5 11l2.5 2.5L15 8" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
           Trusted by leaders from

@@ -3,7 +3,7 @@ import { Hero } from "@/components/Hero";
 import { ProblemSection } from "@/components/ProblemSection";
 import { SolutionSection } from "@/components/SolutionSection";
 import { ProgramsSection } from "@/components/ProgramsSection";
-import { MentorShowcaseSection } from "@/components/MentorShowcaseSection";
+import { MentorSection } from "@/components/MentorSection";
 import { SuccessSection } from "@/components/SuccessSection";
 import { FAQSection } from "@/components/FAQSection";
 import { Footer } from "@/components/Footer";
@@ -17,7 +17,7 @@ export default function Home() {
       <ProblemSection />
       <SolutionSection />
       <ProgramsSection />
-      <MentorShowcaseSection />
+      <MentorSection />
       <SuccessSection />
       <FAQSection />
       <ContactSection />

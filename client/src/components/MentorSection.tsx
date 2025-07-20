@@ -18,87 +18,77 @@ import metaLogo from "@assets/logo5_1752659516426.png";
 import stripeLogo from "@assets/logo8_1752659516426.png";
 
 const mentors = [
-  // Row 1
-  {
-    name: "Rajat Kohli",
-    role: "Sales Leader at Google",
-    company: "Ex-Adobe",
-    image: rajatImage
-  },
-  {
-    name: "Akhil K",
-    role: "Senior Program Manager at NetJean",
-    company: "Ex-Microsoft, Walmart",
-    image: akhilImage
-  },
-  {
-    name: "Sahil Chaudhry",
-    role: "Senior Manager @ Amazon DevOps at",
-    company: "KPMG Global",
-    image: sahilChaudhryImage
-  },
-  // Row 2
-  {
-    name: "Nick Parker",
-    role: "Sr. Director Engineering at Fannie Mae",
-    company: "Ex-Prudential Financial",
-    image: nickImage
-  },
-  {
-    name: "Sandeep P. (BeOne)",
-    role: "Director at Capgemini",
-    company: "Ex: Accenture",
-    image: rajImage,
-    motto: "Guiding you to global impact.",
-    testimonial: "Raj's insights helped me scale my startup and attract investors. He always provided honest feedback and practical solutions. His support made all the difference.",
-    logo: beOneLogo
-  },
-  {
-    name: "Shubhi Duggal",
-    role: "Chartered Accountant (CA) &",
-    company: "Chartered Financial Analyst (CFA) at",
-    image: shubhiImage
-  },
-  // Row 3
-  {
-    name: "Alok Agarwal",
-    role: "Data Scientist at Airbnb",
-    company: "Ex-Meta, Twitter",
-    image: alokImage,
-    motto: "Data-driven decisions for impactful results.",
-    testimonial: "Alok's expertise in data science helped me understand complex concepts and apply them to real-world problems.",
-    logo: metaLogo
-  },
-  {
-    name: "Sahil Kohli",
-    role: "Founder & CEO at BeOne",
-    company: "Ex-Google, Ex-ShareChat",
-    image: sahilKohliImage,
-    motto: "Empowering the next generation of tech leaders.",
-    testimonial: "Sahil's guidance was instrumental in helping me transition into product management. His insights into the tech industry are invaluable.",
-    logo: beOneLogo
-  },
-  {
-    name: "Nitil Pai",
-    role: "Senior Director at KPMG",
-    company: "Ex-Google, Ex-ShareChat",
-    image: nitilImage,
-    motto: "Transforming careers through strategic mentorship.",
-    testimonial: "Nitil's experience in scaling businesses provided me with practical frameworks that I use daily in my role.",
-    logo: kpmgLogo
-  },
-  // Row 4 - Payal first, then Nimisha
-  {
-    name: "Payal Dedhia",
-    role: "Founder, Filmy AI & EdTech",
-    company: "Entrepreneur",
-    image: payalImage
-  },
   {
     name: "Nimisha Sainani",
     role: "Founder @ The Quiet Reset",
-    company: "13+ years scaling startups across India",
-    image: nimishaImage
+    company: "13+ years scaling startups across India and the U.S.",
+    image: "/attached_assets/Nimisha Sainaini_1752659516427.jpeg"
+  },
+  {
+    name: "Sahil Kohli",
+    role: "Director at Tiger Analytics",
+    company: "Ex: Deloitte",
+    image: "/attached_assets/sahil kohli_1752659516428.jpeg"
+  },
+  {
+    name: "Nitil D",
+    role: "Generative AI & BI Architect at Tiger Analytics",
+    company: "Ex: Pepsico",
+    image: "/attached_assets/Nitil_1752659516427.jpeg"
+  },
+  {
+    name: "Rajat Kohli",
+    role: "Sales Leader at Google",
+    company: "Ex: Adobe",
+    image: "/attached_assets/Rajat_1752659516427.jpeg"
+  },
+  {
+    name: "Akhil K",
+    role: "Senior Program Manager at Nielsen",
+    company: "Ex: Microsoft, Walmart",
+    image: "/attached_assets/akhil_1752659516424.jpeg"
+  },
+  {
+    name: "Sahil Chaudhry",
+    role: "Senior Manager Cloud and DevOps at KPMG Global",
+    company: "Ex: Deloitte",
+    image: "/attached_assets/sahilc_1752659516428.jpeg"
+  },
+  {
+    name: "Nick Parker",
+    role: "Sr. Director Engineering at Fannie Mae",
+    company: "Ex: Prudential Financial",
+    image: "/attached_assets/Nick Parker_1752659516426.jpeg"
+  },
+  {
+    name: "Raj Kumar",
+    role: "Director at Capgemini",
+    company: "Ex: Accenture",
+    image: "/attached_assets/Raj_1752659516427.jpeg"
+  },
+  {
+    name: "Shubhi Duggal",
+    role: "Chartered Accountant | CFA at AIG",
+    company: "Ex: Accenture",
+    image: "/attached_assets/Shubhi_1752659516428.jpeg"
+  },
+  {
+    name: "Alok Agarwal",
+    role: "Data Scientist at Airbnb",
+    company: "Ex: Meta, Twitter",
+    image: "/attached_assets/Alok_1752659516425.jpeg"
+  },
+  // New mentors
+  {
+    name: "Daniel Kravtsov",
+    role: "CEO of Improvado - AI Revenue Ecosystem",
+    image: "/attached_assets/Daniel Kravtsov.jpeg"
+  },
+  {
+    name: "Ivan Tsybaev",
+    role: "Founder & Serial Entrepreneur",
+    company: "Y Combinator alum",
+    image: "/attached_assets/IvanTsybaev.jpeg"
   }
 ];
 
@@ -121,100 +111,26 @@ export function MentorSection() {
         
         {/* Mentor Grid with fixed heights and proper alignment */}
         <div className="w-full">
-          {/* Top 9 mentors in 3x3 grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {mentors.slice(0, 9).map((mentor, index) => (
-              <div 
-                key={index} 
-                className="relative bg-white rounded-xl shadow-lg p-6 text-center flex flex-col overflow-hidden"
-                style={{ minHeight: '320px' }}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {mentors.map((mentor, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center bg-white rounded-2xl shadow p-6 border border-gray-100"
               >
-                {/* Main Content */}
-                <div className="flex-grow">
-                  <div className="w-20 h-20 mx-auto mb-4 flex-shrink-0">
-                    <img 
-                      src={mentor.image} 
-                      alt={mentor.name}
-                      className="w-full h-full rounded-full object-cover border-2 border-blue-50"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = 'https://via.placeholder.com/150';
-                      }}
-                    />
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-1">
-                    {mentor.name}
-                  </h3>
-                  <div className="mb-3">
-                    <p className="text-sm text-gray-600">
-                      {mentor.role}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      {mentor.company}
-                    </p>
-                  </div>
-                  
-                  {/* Testimonial Content */}
-                  {mentor.motto && (
-                    <div className="mt-4 pt-4 border-t border-gray-100">
-                      <p className="text-sm italic text-gray-700 mb-2">"{mentor.motto}"</p>
-                      {mentor.logo && (
-                        <div className="flex justify-center space-x-2 mt-2">
-                          <img src={mentor.logo} alt="Company Logo" className="h-4 opacity-70" />
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
+                <img
+                  src={mentor.image}
+                  alt={mentor.name}
+                  className="w-24 h-24 rounded-full object-cover border-2 border-blue-100 mb-4"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = 'https://via.placeholder.com/150';
+                  }}
+                />
+                <h3 className="text-lg font-bold text-gray-900 mb-1">{mentor.name}</h3>
+                <div className="text-blue-700 text-sm font-semibold mb-1">{mentor.role}</div>
+                <div className="text-xs text-gray-500 text-center">{mentor.company}</div>
               </div>
             ))}
-          </div>
-          
-          {/* Bottom 2 centered mentors */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-16">
-            {mentors.slice(9, 11).map((mentor, index) => (
-              <div 
-                key={index} 
-                className="bg-white rounded-xl shadow-lg p-6 text-center w-full max-w-xs"
-                style={{ minHeight: '260px' }}
-              >
-                <div className="w-20 h-20 mx-auto mb-4">
-                  <img 
-                    src={mentor.image} 
-                    alt={mentor.name}
-                    className="w-full h-full rounded-full object-cover border-2 border-blue-50"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = 'https://via.placeholder.com/150';
-                    }}
-                  />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  {mentor.name}
-                </h3>
-                <div className="mb-2">
-                  <p className="text-sm text-gray-600">
-                    {mentor.role}
-                  </p>
-                  <p className="text-xs text-gray-500 mt-1">
-                    {mentor.company}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        
-        {/* Company logos section */}
-        <div className="text-center">
-          <p className="text-gray-600 mb-8">Our mentor network includes leaders from these top companies:</p>
-          <div className="flex justify-center items-center flex-wrap gap-8">
-            <img src={kpmgLogo} alt="KPMG" className="h-8 opacity-60" />
-            <img src={googleLogo} alt="Google" className="h-8 opacity-60" />
-            <img src={beOneLogo} alt="BeOne" className="h-8 opacity-60" />
-            <img src={amazonLogo} alt="Amazon" className="h-8 opacity-60" />
-            <img src={metaLogo} alt="Meta" className="h-8 opacity-60" />
-            <img src={stripeLogo} alt="Stripe" className="h-8 opacity-60" />
           </div>
         </div>
       </div>

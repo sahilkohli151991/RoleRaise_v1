@@ -1,6 +1,6 @@
 export function ContactSection() {
   return (
-    <section className="relative py-20 md:py-32 bg-gradient-to-b from-blue-50 via-white to-blue-100 px-4 border-b border-gray-100">
+    <section id="contact" className="relative py-20 md:py-32 bg-gradient-to-b from-blue-50 via-white to-blue-100 px-4 border-b border-gray-100">
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
           Get in <span className="text-blue-600">Touch</span>

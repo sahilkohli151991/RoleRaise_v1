@@ -6,7 +6,7 @@ export function ProgramsSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="bg-white">
+    <section id="programs" className="bg-white">
       <PricingSection />
       
       <section className="py-12 bg-gray-50">
@@ -31,6 +31,6 @@ export function ProgramsSection() {
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
       />
-    </div>
+    </section>
   );
 }
