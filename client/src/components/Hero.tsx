@@ -51,32 +51,15 @@ export function Hero() {
   // Typewriter effect for main headline
   const [startTypewriter, setStartTypewriter] = useState(false);
   const [typewriterComplete, setTypewriterComplete] = useState(false);
-  const [isIndia, setIsIndia] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
-
-  // Detect user's location for salary text
-  useEffect(() => {
-    const detectLocation = async () => {
-      try {
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-        setIsIndia(data.country === 'IN');
-      } catch (error) {
-        console.error('Error detecting location, defaulting to USD:', error);
-        setIsIndia(false);
-      }
-    };
-
-    detectLocation();
-  }, []);
+  
+  // Default to USD
+  const headlineText = "Unlock $200K+ Tech Careers with Elite Mentorship";
 
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen);
   };
 
-  const headlineText = isIndia 
-    ? "Unlock 35LPA+ Tech Careers with Elite Mentorship"
-    : "Unlock $200K+ Tech Careers with Elite Mentorship";
 
   const typewriterText = useTypewriter(
     startTypewriter ? headlineText : "",
@@ -197,8 +180,7 @@ export function Hero() {
       {/* Mentorship Form Modal */}
       <MentorshipForm 
         isOpen={isFormOpen} 
-        onClose={toggleForm} 
-        isIndia={isIndia} 
+        onClose={toggleForm}
       />
     </section>
   );

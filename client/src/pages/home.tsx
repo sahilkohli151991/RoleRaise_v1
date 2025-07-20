@@ -5,9 +5,7 @@ import { SolutionSection } from "@/components/SolutionSection";
 import { ProgramsSection } from "@/components/ProgramsSection";
 import { MentorShowcaseSection } from "@/components/MentorShowcaseSection";
 import { SuccessSection } from "@/components/SuccessSection";
-
 import { FAQSection } from "@/components/FAQSection";
-
 import { Footer } from "@/components/Footer";
 import { ContactSection } from "@/components/ContactSection";
 
@@ -21,9 +19,7 @@ export default function Home() {
       <ProgramsSection />
       <MentorShowcaseSection />
       <SuccessSection />
-      
       <FAQSection />
-
       <ContactSection />
       <Footer />
     </div>

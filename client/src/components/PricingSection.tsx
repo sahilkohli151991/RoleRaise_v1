@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Zap, Award, Rocket, Briefcase } from 'lucide-react';
 
@@ -19,25 +19,9 @@ type Plan = {
 };
 
 const PricingSection = () => {
-  const [currency, setCurrency] = useState<'USD' | 'INR'>('USD');
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const detectLocation = async () => {
-      try {
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-        setCurrency(data.country === 'IN' ? 'INR' : 'USD');
-      } catch (error) {
-        console.error('Error detecting location, defaulting to USD:', error);
-        setCurrency('USD');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    detectLocation();
-  }, []);
+  // Default to USD, GeoIP detection removed as per user request
+  const [currency] = useState<'USD' | 'INR'>('USD');
+  const isLoading = false; // No loading state needed as we're not detecting location
 
   const plans: Plan[] = [
     {
@@ -138,11 +122,6 @@ const PricingSection = () => {
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Choose Your Career Growth Plan</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Select the perfect plan to accelerate your tech career with personalized mentorship and support
-            {!isLoading && (
-              <span className="block mt-2 text-sm text-blue-600">
-                Showing prices in {currency === 'INR' ? 'Indian Rupees (₹)' : 'US Dollars ($)'}
-              </span>
-            )}
           </p>
         </div>
 
@@ -211,10 +190,6 @@ const PricingSection = () => {
               </div>
             </motion.div>
           ))}
-        </div>
-        
-        <div className="mt-12 text-center text-sm text-gray-500">
-          <p>Need help choosing a plan? <a href="#contact" className="text-blue-600 hover:underline">Contact our team</a></p>
         </div>
       </div>
     </section>

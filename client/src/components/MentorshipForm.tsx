@@ -18,10 +18,9 @@ const experienceLevels: ExperienceLevel[] = [
 interface MentorshipFormProps {
   isOpen: boolean;
   onClose: () => void;
-  isIndia: boolean;
 }
 
-export function MentorshipForm({ isOpen, onClose, isIndia }: MentorshipFormProps) {
+export function MentorshipForm({ isOpen, onClose }: MentorshipFormProps) {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -30,6 +29,9 @@ export function MentorshipForm({ isOpen, onClose, isIndia }: MentorshipFormProps
     currentSalary: '',
     targetSalary: '',
   });
+  
+  // Default currency to USD
+  const currencySymbol = '$';
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
@@ -55,40 +57,49 @@ export function MentorshipForm({ isOpen, onClose, isIndia }: MentorshipFormProps
     };
   }, [isOpen, onClose]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value,
+      [name]: value
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    
-    // Reset form after submission
-    setTimeout(() => {
-      setFormData({
-        fullName: '',
-        email: '',
-        currentRole: '',
-        experience: '',
-        currentSalary: '',
-        targetSalary: '',
-      });
-      onClose();
-      // Show success message for a while before closing
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 3000);
-    }, 2000);
+    try {
+      // Add your form submission logic here
+      console.log('Form submitted:', formData);
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
 
-  const salaryPlaceholder = isIndia ? 'e.g., ₹15,00,000' : 'e.g., $80,000';
-  const targetSalaryPlaceholder = isIndia ? 'e.g., ₹35,00,000' : 'e.g., $200,000';
+  // Salary input with currency symbol
+  const renderSalaryInput = (name: string, label: string, placeholder: string) => (
+    <div className="mb-6">
+      <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
+        {label} ({currencySymbol})
+      </label>
+      <div className="relative rounded-md shadow-sm">
+        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <span className="text-gray-500 sm:text-sm">
+            {currencySymbol}
+          </span>
+        </div>
+        <input
+          type="number"
+          name={name}
+          id={name}
+          value={formData[name as keyof typeof formData]}
+          onChange={handleInputChange}
+          className="focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md py-3 px-4 border"
+          placeholder={placeholder}
+        />
+      </div>
+    </div>
+  );
 
   return (
     <AnimatePresence>
@@ -112,7 +123,7 @@ export function MentorshipForm({ isOpen, onClose, isIndia }: MentorshipFormProps
 
             <div className="p-8">
               <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8">
-                Get Your Free {isIndia ? '35LPA+' : '$200K+'} Tech Roadmap
+                Get Your Free $200K+ Tech Roadmap
               </h2>
 
               {isSubmitted ? (
@@ -135,7 +146,7 @@ export function MentorshipForm({ isOpen, onClose, isIndia }: MentorshipFormProps
                         id="fullName"
                         name="fullName"
                         value={formData.fullName}
-                        onChange={handleChange}
+                        onChange={handleInputChange}
                         placeholder="Enter your full name"
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         required
@@ -151,7 +162,7 @@ export function MentorshipForm({ isOpen, onClose, isIndia }: MentorshipFormProps
                         id="email"
                         name="email"
                         value={formData.email}
-                        onChange={handleChange}
+                        onChange={handleInputChange}
                         placeholder="Enter your email address"
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         required
@@ -167,7 +178,7 @@ export function MentorshipForm({ isOpen, onClose, isIndia }: MentorshipFormProps
                         id="currentRole"
                         name="currentRole"
                         value={formData.currentRole}
-                        onChange={handleChange}
+                        onChange={handleInputChange}
                         placeholder="e.g., Software Engineer, Student, etc."
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         required
@@ -182,7 +193,7 @@ export function MentorshipForm({ isOpen, onClose, isIndia }: MentorshipFormProps
                         id="experience"
                         name="experience"
                         value={formData.experience}
-                        onChange={handleChange}
+                        onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none bg-white"
                         required
                       >
@@ -195,35 +206,19 @@ export function MentorshipForm({ isOpen, onClose, isIndia }: MentorshipFormProps
                       </select>
                     </div>
 
-                    <div className="space-y-2">
-                      <label htmlFor="currentSalary" className="block text-sm font-medium text-gray-700">
-                        Current Salary (Optional)
-                      </label>
-                      <input
-                        type="text"
-                        id="currentSalary"
-                        name="currentSalary"
-                        value={formData.currentSalary}
-                        onChange={handleChange}
-                        placeholder={salaryPlaceholder}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                      />
-                    </div>
+                    {/* Current Salary Input */}
+                    {renderSalaryInput(
+                      'currentSalary',
+                      'Current Salary (Optional)',
+                      'e.g., 80,000'
+                    )}
 
-                    <div className="space-y-2">
-                      <label htmlFor="targetSalary" className="block text-sm font-medium text-gray-700">
-                        Target Salary (Optional)
-                      </label>
-                      <input
-                        type="text"
-                        id="targetSalary"
-                        name="targetSalary"
-                        value={formData.targetSalary}
-                        onChange={handleChange}
-                        placeholder={targetSalaryPlaceholder}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                      />
-                    </div>
+                    {/* Target Salary Input */}
+                    {renderSalaryInput(
+                      'targetSalary',
+                      'Target Salary (Optional)',
+                      'e.g., 200,000'
+                    )}
                   </div>
 
                   <div className="pt-2">
