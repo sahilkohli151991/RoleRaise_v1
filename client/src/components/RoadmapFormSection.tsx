@@ -26,6 +26,19 @@ export function RoadmapFormSection() {
   const inView = useOnceInView(sectionRef);
   const [assembled, setAssembled] = useState(false);
 
+  // Form state
+  const [form, setForm] = useState({
+    fullName: "",
+    email: "",
+    currentRole: "",
+    experience: "",
+    currentSalary: "",
+    targetSalary: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [error, setError] = useState("");
+
   // Animate pieces in sequence
   useEffect(() => {
     if (inView) {
@@ -33,6 +46,41 @@ export function RoadmapFormSection() {
       return () => clearTimeout(timeout);
     }
   }, [inView]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError("");
+    try {
+      const params = new URLSearchParams();
+      params.append("fullName", form.fullName);
+      params.append("email", form.email);
+      params.append("currentRole", form.currentRole);
+      params.append("experience", form.experience);
+      params.append("currentSalary", form.currentSalary);
+      params.append("targetSalary", form.targetSalary);
+      const url = `https://script.google.com/macros/s/AKfycbw-vcuihIy6B4T3D0Z6_ods3I7xaqfz9sv0voSnLacCNIzkdcAXTjyzbr6cS1OAxNBtxg/exec?${params.toString()}`;
+      await fetch(url, { method: "GET", mode: "no-cors" });
+      setShowSuccess(true);
+      setForm({
+        fullName: "",
+        email: "",
+        currentRole: "",
+        experience: "",
+        currentSalary: "",
+        targetSalary: "",
+      });
+    } catch (err) {
+      setError("There was an error submitting your request. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section className="roadmap-section" ref={sectionRef}>
@@ -45,22 +93,57 @@ export function RoadmapFormSection() {
         {/* Center form reveal */}
         <div className={`roadmap-form-shell${assembled ? " reveal" : ""}`}>
           <h2 className="roadmap-form-title">Get Your Free $200K+ Tech Roadmap</h2>
-          <form className="roadmap-form-fields">
+          {showSuccess ? (
+            <div className="bg-green-100 text-green-800 p-6 rounded-xl font-semibold text-center">
+              Thank you! Your roadmap request has been received. We'll be in touch soon.
+            </div>
+          ) : (
+            <form className="roadmap-form-fields" onSubmit={handleSubmit}>
             <label className="roadmap-label">
               Full Name *
-              <input className="roadmap-input" type="text" placeholder="Enter your full name" required />
+                <input
+                  className="roadmap-input"
+                  type="text"
+                  name="fullName"
+                  placeholder="Enter your full name"
+                  required
+                  value={form.fullName}
+                  onChange={handleChange}
+                />
             </label>
             <label className="roadmap-label">
               Email Address *
-              <input className="roadmap-input" type="email" placeholder="Enter your email address" required />
+                <input
+                  className="roadmap-input"
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email address"
+                  required
+                  value={form.email}
+                  onChange={handleChange}
+                />
             </label>
             <label className="roadmap-label">
               Current Role *
-              <input className="roadmap-input" type="text" placeholder="e.g., Software Engineer, Student, etc." required />
+                <input
+                  className="roadmap-input"
+                  type="text"
+                  name="currentRole"
+                  placeholder="e.g., Software Engineer, Student, etc."
+                  required
+                  value={form.currentRole}
+                  onChange={handleChange}
+                />
             </label>
             <label className="roadmap-label">
               Years of Experience *
-              <select className="roadmap-input" required>
+                <select
+                  className="roadmap-input"
+                  name="experience"
+                  required
+                  value={form.experience}
+                  onChange={handleChange}
+                >
                 <option value="">Select experience level</option>
                 <option value="0-1">0-1 years</option>
                 <option value="2-3">2-3 years</option>
@@ -71,14 +154,32 @@ export function RoadmapFormSection() {
             </label>
             <label className="roadmap-label">
               Current Salary (Optional)
-              <input className="roadmap-input" type="text" placeholder="e.g., $80,000" />
+                <input
+                  className="roadmap-input"
+                  type="text"
+                  name="currentSalary"
+                  placeholder="e.g., $80,000"
+                  value={form.currentSalary}
+                  onChange={handleChange}
+                />
             </label>
             <label className="roadmap-label">
               Target Salary (Optional)
-              <input className="roadmap-input" type="text" placeholder="e.g., $200,000" />
+                <input
+                  className="roadmap-input"
+                  type="text"
+                  name="targetSalary"
+                  placeholder="e.g., $200,000"
+                  value={form.targetSalary}
+                  onChange={handleChange}
+                />
             </label>
-            <button className="roadmap-submit" type="submit">Get My Free Roadmap</button>
+              <button className="roadmap-submit" type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : "Get My Free Roadmap"}
+              </button>
+              {error && <div className="text-red-600 font-medium mt-2">{error}</div>}
           </form>
+          )}
         </div>
       </div>
     </section>

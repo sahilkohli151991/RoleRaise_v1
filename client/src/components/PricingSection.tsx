@@ -1,8 +1,13 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Check, Zap, Award, Rocket, Briefcase } from 'lucide-react';
+import { Zap, Briefcase, Award, Rocket } from 'lucide-react';
+import { StripeCheckoutButton } from './ui/StripeCheckoutButton';
 
-type Plan = {
+interface Feature {
+  text: string;
+  included: boolean;
+}
+
+interface Plan {
   id: string;
   name: string;
   level: string;
@@ -11,17 +16,12 @@ type Plan = {
     inr: number;
   };
   duration: string;
-  features: {
-    text: string;
-    included: boolean;
-  }[];
+  features: Feature[];
   popular?: boolean;
-};
+}
 
 const PricingSection = () => {
-  // Default to USD, GeoIP detection removed as per user request
   const [currency] = useState<'USD' | 'INR'>('USD');
-  const isLoading = false; // No loading state needed as we're not detecting location
 
   const plans: Plan[] = [
     {
@@ -91,7 +91,6 @@ const PricingSection = () => {
     },
   ];
 
-  // Ensure all cards have the same height by making content fill available space
   const cardContentClass = "flex flex-col h-full";
   const buttonContainerClass = "mt-auto pt-6";
 
@@ -105,94 +104,86 @@ const PricingSection = () => {
     return icons[index % icons.length];
   };
 
-  if (isLoading) {
-    return (
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">Loading pricing...</div>
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <section id="pricing" className="py-20 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Choose Your Career Growth Plan</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Select the perfect plan to accelerate your tech career with personalized mentorship and support
-          </p>
-        </div>
+    <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">Choose Your Path to Success</h2>
+        <p className="text-xl text-gray-600">Invest in your future with our proven mentorship programs</p>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              className={`relative flex flex-col h-full bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 ${plan.popular ? 'ring-2 ring-blue-500 transform -translate-y-2' : ''}`}
-            >
-              {plan.popular && (
-                <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-bl-lg">
-                  MOST POPULAR
-                </div>
-              )}
-              
-              <div className={`p-6 ${cardContentClass}`}>
-                <div className="flex items-center mb-4">
-                  <div className="p-2 bg-blue-100 rounded-lg text-blue-600 mr-3">
-                    {getIcon(index)}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {plans.map((plan, index) => (
+          <div
+            key={plan.id}
+            className={`rounded-2xl bg-white p-8 shadow-xl border-2 transition-all duration-200 ${
+              plan.popular ? 'border-blue-500 scale-105' : 'border-gray-100'
+            }`}
+          >
+            <div className={cardContentClass}>
+              <div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
+                      {getIcon(index)}
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900">{plan.name}</h3>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">{plan.name}</h3>
-                    <span className="text-sm text-blue-600 font-medium">{plan.level}</span>
-                  </div>
-                </div>
-                
-                <div className="mt-6 mb-8">
-                  <div className="flex items-end">
-                    <span className="text-4xl font-bold text-gray-900">
-                      {currency === 'USD' ? `$${plan.price.usd.toLocaleString()}` : `₹${plan.price.inr.toLocaleString()}`}
+                  {plan.popular && (
+                    <span className="px-3 py-1 text-xs font-semibold text-blue-600 bg-blue-50 rounded-full">
+                      Popular
                     </span>
-                    <span className="ml-2 text-gray-500">/{plan.duration}</span>
-                  </div>
+                  )}
                 </div>
-                
-                <ul className="space-y-3 flex-grow">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start">
-                      {feature.included ? (
-                        <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                      ) : (
-                        <span className="w-5 h-5 text-red-400 mr-2 flex-shrink-0">×</span>
-                      )}
-                      <span className={`text-sm ${feature.included ? 'text-gray-700' : 'text-gray-400 line-through'}`}>
+                <p className="mt-2 text-sm text-gray-500">{plan.level}</p>
+                <p className="mt-4 text-4xl font-bold text-gray-900">
+                  {currency === 'USD' ? '$' : '₹'}
+                  {currency === 'USD' ? plan.price.usd.toLocaleString() : plan.price.inr.toLocaleString()}
+                </p>
+                <p className="mt-1 text-sm text-gray-500">{plan.duration}</p>
+
+                <ul className="mt-6 space-y-4">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-3">
+                      <div className={`mt-1 ${feature.included ? 'text-blue-600' : 'text-gray-400'}`}>
+                        {feature.included ? (
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                              fillRule="evenodd"
+                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        ) : (
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                              fillRule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        )}
+                      </div>
+                      <span className={`text-sm ${feature.included ? 'text-gray-600' : 'text-gray-400'}`}>
                         {feature.text}
                       </span>
                     </li>
                   ))}
                 </ul>
-                
-                <div className={buttonContainerClass}>
-                  <button
-                    className={`w-full py-3 px-6 rounded-lg font-medium transition-colors duration-200 ${
-                      plan.popular
-                        ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800'
-                        : 'bg-gray-900 text-white hover:bg-gray-800'
-                    }`}
-                  >
-                    Choose {plan.name}
-                  </button>
-                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+
+              <div className={buttonContainerClass}>
+                <StripeCheckoutButton 
+                  amount={currency === 'USD' ? plan.price.usd : plan.price.inr} 
+                  name={plan.name}
+                  description={`${plan.level} - ${plan.duration} program`}
+                  className="w-full py-3 px-6 bg-[#635bff] hover:bg-[#3f2b96] text-white font-medium rounded-lg transition-colors duration-200 mt-4"
+                />        
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 

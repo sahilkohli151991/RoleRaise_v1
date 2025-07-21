@@ -68,11 +68,27 @@ export function MentorshipForm({ isOpen, onClose }: MentorshipFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      // Add your form submission logic here
-      console.log('Form submitted:', formData);
+      const params = new URLSearchParams();
+      params.append("fullName", formData.fullName);
+      params.append("email", formData.email);
+      params.append("currentRole", formData.currentRole);
+      params.append("experience", formData.experience);
+      params.append("currentSalary", formData.currentSalary);
+      params.append("targetSalary", formData.targetSalary);
+      const url = `https://script.google.com/macros/s/AKfycbw-vcuihIy6B4T3D0Z6_ods3I7xaqfz9sv0voSnLacCNIzkdcAXTjyzbr6cS1OAxNBtxg/exec?${params.toString()}`;
+      await fetch(url, { method: "GET", mode: "no-cors" });
       setIsSubmitted(true);
+      setFormData({
+        fullName: '',
+        email: '',
+        currentRole: '',
+        experience: '',
+        currentSalary: '',
+        targetSalary: '',
+      });
     } catch (error) {
       console.error('Error submitting form:', error);
+      // Optionally show an error message to the user
     }
   };
 
